@@ -1,0 +1,108 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Navigation Menu */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu li {
+    display: inline-block;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    padding: 5px 15px;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #ff0055; /* Highlight color */
+}
+
+/* Register Button */
+.register-btn {
+    text-decoration: none;
+    background-color: #ff0055;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+.register-btn:hover {
+    background-color: #ff3377; /* Hover effect */
+}
+
+/* Section 1: Hero (Background Image) */
+#hero {
+    background-image: url('./assets/banner.jpg'); /* Replace with your uploaded banner image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.conference-title {
+    font-size: 4rem;
+    animation: expand-text 1.2s ease-in-out;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+}
+
+/* Expand Effect */
+@keyframes expand-text {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Plain Black Background (Section 2, Section 3, and Section 4) */
+#features, #sponsors, #research-proposals {
+    background-color: #000; /* Black Background */
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+/* Section 5: Research Again (Background Image) */
+#research {
+    background-image: url('./assets/banner.jpg'); /* Reuse the background */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}

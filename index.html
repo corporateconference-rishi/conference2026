@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgNite 2026 Conference</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 100%);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #9d4edd;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #9d4edd;
+    }
+
+    .btn {
+      background: #9d4edd;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #7b2cbf;
+    }
+
+    .hero {
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin-bottom: 40px;
+      color: #ddd;
+    }
+
+    .waves {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .waves svg {
+      position: relative;
+      display: block;
+      width: calc(200% + 1.3px);
+      height: 120px;
+    }
+
+    .waves .shape-fill {
+      fill: #9d4edd;
+      animation: waveMove 6s infinite linear;
+    }
+
+    @keyframes waveMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0a0a0a;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">AgNite</div>
+    <nav>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#sponsors">Sponsors</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#account">My Account</a></li>
+      </ul>
+    </nav>
+    <button class="btn">Get Started</button>
+  </header>
+
+  <section class="hero">
+    <h1>AgNite 2026 Conference</h1>
+    <p>Forefront of Innovation, Commerce and Artificial Intelligence</p>
+    <button class="btn">Register Now</button>
+
+    <div class="waves">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0 C150,100 350,0 600,50 C850,100 1050,0 1200,50 L1200

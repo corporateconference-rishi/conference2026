@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Enables smooth scrolling for navigation */
 }
 
 /* Navigation Menu */
@@ -36,7 +36,7 @@ header {
 }
 
 .nav-menu a:hover {
-    color: #ff0055; /* Highlight color */
+    color: #ff0055; /* Highlight color on hover */
 }
 
 /* Register Button */
@@ -52,57 +52,54 @@ header {
     background-color: #ff3377; /* Hover effect */
 }
 
-/* Section 1: Hero (Background Image) */
+/* Hero Section (Section 1: Banner Background) */
 #hero {
-    background-image: url('./assets/banner.jpg'); /* Replace with your uploaded banner image */
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    text-align: center;
+    background-image: url('./assets/banner.png'); /* Path to your banner image */
+    background-size: cover;                      /* Covers the entire section */
+    background-position: center;                /* Centers the image */
+    background-repeat: no-repeat;               /* Prevents tiling */
+    height: 100vh;                              /* Full-screen height */
+    text-align: center;                         /* Aligns text horizontally */
     display: flex;
-    flex-direction: column;
+    flex-direction: column;                     /* Flexbox for centered text vertically */
     justify-content: center;
-    color: white;
+    color: white;                               /* Text color */
 }
 
-.conference-title {
-    font-size: 4rem;
-    animation: expand-text 1.2s ease-in-out;
-}
-
-.subtitle {
-    font-size: 1.5rem;
-}
-
-/* Expand Effect */
-@keyframes expand-text {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-/* Plain Black Background (Section 2, Section 3, and Section 4) */
-#features, #sponsors, #research-proposals {
-    background-color: #000; /* Black Background */
-    color: white;
-    padding: 100px 20px;
+/* Features Section (Plain Black Background) */
+#features {
+    background-color: black; /* Black background */
+    color: white;            /* White text */
+    padding: 100px 20px;     /* Padding for content */
     text-align: center;
 }
 
-/* Section 5: Research Again (Background Image) */
+/* Sponsors Section (Plain Black Background) */
+#sponsors {
+    background-color: black; /* Black background */
+    color: white;            /* White text */
+    padding: 100px 20px;     /* Padding for content */
+    text-align: center;
+}
+
+/* Research Proposals Section (Plain Black Background) */
+#research-proposals {
+    background-color: black; /* Black background */
+    color: white;            /* White text */
+    padding: 100px 20px;     /* Padding for content */
+    text-align: center;
+}
+
+/* Research Section (Section 5: Banner Background) */
 #research {
-    background-image: url('./assets/banner.jpg'); /* Reuse the background */
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    text-align: center;
+    background-image: url('./assets/banner.png'); /* Path to your banner image */
+    background-size: cover;                      /* Covers the entire section */
+    background-position: center;                /* Centers the image */
+    background-repeat: no-repeat;               /* Prevents tiling */
+    height: 100vh;                              /* Full-screen height */
+    text-align: center;                         /* Aligns text horizontally */
     display: flex;
-    flex-direction: column;
+    flex-direction: column;                     /* Flexbox for centered text vertically */
     justify-content: center;
-    color: white;
+    color: white;                               /* Text color */
 }

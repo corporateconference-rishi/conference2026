@@ -28,13 +28,63 @@ header {
 .nav-logo .logo-a {
     font-size: 2rem;
     color: #ff0055;
-    animation: spin-a 0.7s ease-in-out infinite alternate; /* Spinning animation */
-}
-
-.nav-logo:hover .logo-a {
-    animation: spin-a-hover 0.7s ease-in-out infinite alternate;
 }
 
 .nav-logo .logo-title {
     font-size: 1.6rem;
     font-weight: bold;
+    color: white;
+    margin-left: 10px;
+}
+
+/* Register Button (Right) */
+.register-btn {
+    background-color: #ff0055;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.register-btn:hover {
+    background-color: #ff3377;
+}
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    background-image: url('./assets/banner.png'); /* Ensure banner.png is in the assets folder */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.conference-title {
+    font-size: 6rem; /* Large and Bold */
+    font-weight: bold;
+    color: white;
+    animation: expand-text 1.2s ease-in-out;
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    color: #ddd; /* Softer color */
+}
+
+/* Expand Animation */
+@keyframes expand-text {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

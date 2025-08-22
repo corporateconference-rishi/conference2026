@@ -1,8 +1,14 @@
-/* General Reset */
+/* General Reset - Applies to the whole page */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     scroll-behavior: smooth;
+}
+
+/* Sections - Creates spacings between sections */
+section {
+    padding: 70px 20px; /* Internal spacing inside each section */
+    margin-top: 50px;   /* Gap between sections */
 }
 
 /* Top Menu Bar */
@@ -10,31 +16,30 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    background: rgba(0, 0, 0, 0.7); /* Translucent black background */
     padding: 15px 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Space between logo and registration button */
     align-items: center;
     z-index: 1000;
 }
 
-/* AgNite Logo (Left) */
+/* AgNite'26 Logo Section (Left) */
 .nav-logo {
     display: flex;
     align-items: center;
-    cursor: pointer;
 }
 
 .nav-logo .logo-a {
     font-size: 2rem;
-    color: #ff0055;
+    color: #ff0055; /* Vibrant red */
+    margin-right: 5px; /* Reduce space between A and gNite'26 */
 }
 
 .nav-logo .logo-title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: white;
-    margin-left: 10px;
 }
 
 /* Register Button (Right) */
@@ -42,20 +47,20 @@ header {
     background-color: #ff0055;
     color: white;
     padding: 10px 20px;
-    font-size: 1.2rem;
-    border-radius: 25px;
+    font-size: 1.1rem;
+    border-radius: 20px;
     text-decoration: none;
     transition: background-color 0.3s ease-in-out;
 }
 
 .register-btn:hover {
-    background-color: #ff3377;
+    background-color: #ff3377; /* Button changes color on hover */
 }
 
 /* Hero Section */
 #hero {
-    height: 100vh;
-    background-image: url('./assets/banner.png'); /* Ensure banner.png is in the assets folder */
+    height: 100vh; /* Full screen height */
+    background-image: url('./assets/banner.png'); /* Ensure this image exists */
     background-size: cover;
     background-position: center;
     display: flex;
@@ -66,15 +71,20 @@ header {
 }
 
 .conference-title {
-    font-size: 6rem; /* Large and Bold */
+    font-size: 6rem; /* Large and bold text */
     font-weight: bold;
     color: white;
-    animation: expand-text 1.2s ease-in-out;
+    animation: expand-text 1.2s ease-in-out; /* Animates on page load */
+}
+
+.conference-title:hover {
+    color: #ff0055; /* Text turns vibrant red */
+    animation: float-hover 0.5s ease-in-out; /* Gently floats on hover */
 }
 
 .subtitle {
     font-size: 1.8rem;
-    color: #ddd; /* Softer color */
+    color: #ddd; /* Softer white for subtitle text */
 }
 
 /* Expand Animation */
@@ -87,4 +97,148 @@ header {
         transform: scale(1);
         opacity: 1;
     }
+}
+
+/* Float Hover Animation */
+@keyframes float-hover {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px); /* Float slightly upward */
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Section 1: About Conference */
+#about-conference {
+    background-color: black; /* Black background for this section */
+    color: white;            /* White text for contrast */
+    padding: 70px 20px;
+    text-align: center;
+}
+
+#about-conference h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ff0055; /* Vibrant red heading */
+}
+
+/* Section 2: Objectives of Conference */
+#objectives {
+    background-color: black;
+    color: white;
+    padding: 70px 20px;
+    text-align: center;
+}
+
+#objectives h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.objective-box {
+    width: 150px;
+    height: 150px;
+    background-color: #444; /* Matte background */
+    color: white;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 8px; /* Slight rounding for corners */
+    transition: background-color 0.3s ease-in-out; /* Hover animation */
+}
+
+.objective-box:hover {
+    background-color: #ff0055; /* Hover turns to Register button color */
+}
+
+/* Floating Effect for D and E */
+#box-d, #box-e {
+    animation: float-up 5s infinite ease-in-out; /* Gentle floating effect */
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-20px); /* Moves upward */
+    }
+}
+
+/* Section 3: Our Sponsors */
+#sponsors {
+    background-color: #f5f5f5; /* Light background */
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.sponsor img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sponsor:hover img {
+    transform: scale(1.1); /* Zoom effect */
+}
+
+/* Section 4: Conference Tracks */
+#conference-tracks {
+    background-color: black;
+    color: white;
+    padding: 70px 20px;
+}
+
+.track {
+    width: 200px;
+    height: 100px;
+    background-color: #444;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    margin: 20px;
+    display: inline-block;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.track:hover {
+    background-color: #ff0055;
+    transform: scale(1.1); /* Expands on hover */
+}
+
+/* Section 5: Organizing Committee */
+#organizing-committee {
+    background-color: black;
+    color: white;
+    padding: 70px 20px;
+}
+
+.committee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.committee-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.committee-member img:hover {
+    transform: scale(1.1); /* Expand effect on hover */
 }

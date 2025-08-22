@@ -2,104 +2,39 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    scroll-behavior: smooth; /* Enables smooth scrolling for navigation */
+    scroll-behavior: smooth;
 }
 
-/* Navigation Menu */
+/* Top Menu Bar */
 header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     z-index: 1000;
 }
 
-.nav-menu {
+/* AgNite Logo (Left) */
+.nav-logo {
     display: flex;
-    justify-content: space-around;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    align-items: center;
+    cursor: pointer;
 }
 
-.nav-menu li {
-    display: inline-block;
+.nav-logo .logo-a {
+    font-size: 2rem;
+    color: #ff0055;
+    animation: spin-a 0.7s ease-in-out infinite alternate; /* Spinning animation */
 }
 
-.nav-menu a {
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
-    padding: 5px 15px;
-    transition: color 0.3s;
+.nav-logo:hover .logo-a {
+    animation: spin-a-hover 0.7s ease-in-out infinite alternate;
 }
 
-.nav-menu a:hover {
-    color: #ff0055; /* Highlight color on hover */
-}
-
-/* Register Button */
-.register-btn {
-    text-decoration: none;
-    background-color: #ff0055;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 5px;
-}
-
-.register-btn:hover {
-    background-color: #ff3377; /* Hover effect */
-}
-
-/* Hero Section (Section 1: Banner Background) */
-#hero {
-    background-image: url('./assets/banner.png'); /* Path to your banner image */
-    background-size: cover;                      /* Covers the entire section */
-    background-position: center;                /* Centers the image */
-    background-repeat: no-repeat;               /* Prevents tiling */
-    height: 100vh;                              /* Full-screen height */
-    text-align: center;                         /* Aligns text horizontally */
-    display: flex;
-    flex-direction: column;                     /* Flexbox for centered text vertically */
-    justify-content: center;
-    color: white;                               /* Text color */
-}
-
-/* Features Section (Plain Black Background) */
-#features {
-    background-color: black; /* Black background */
-    color: white;            /* White text */
-    padding: 100px 20px;     /* Padding for content */
-    text-align: center;
-}
-
-/* Sponsors Section (Plain Black Background) */
-#sponsors {
-    background-color: black; /* Black background */
-    color: white;            /* White text */
-    padding: 100px 20px;     /* Padding for content */
-    text-align: center;
-}
-
-/* Research Proposals Section (Plain Black Background) */
-#research-proposals {
-    background-color: black; /* Black background */
-    color: white;            /* White text */
-    padding: 100px 20px;     /* Padding for content */
-    text-align: center;
-}
-
-/* Research Section (Section 5: Banner Background) */
-#research {
-    background-image: url('./assets/banner.png'); /* Path to your banner image */
-    background-size: cover;                      /* Covers the entire section */
-    background-position: center;                /* Centers the image */
-    background-repeat: no-repeat;               /* Prevents tiling */
-    height: 100vh;                              /* Full-screen height */
-    text-align: center;                         /* Aligns text horizontally */
-    display: flex;
-    flex-direction: column;                     /* Flexbox for centered text vertically */
-    justify-content: center;
-    color: white;                               /* Text color */
-}
+.nav-logo .logo-title {
+    font-size: 1.6rem;
+    font-weight: bold;

@@ -1,14 +1,28 @@
-// Add Scroll Animations Based on Element Visibility
+// Scroll Animation for Floating Boxes D and E
 document.addEventListener('scroll', () => {
-    const elements = document.querySelectorAll('[data-animation]'); // Grab all elements with animations
+    const floatBoxes = document.querySelectorAll('.floating-box');
     const windowHeight = window.innerHeight;
 
-    elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top; // Distance from top of viewport
+    floatBoxes.forEach(box => {
+        const boxPosition = box.getBoundingClientRect().top;
 
-        // Trigger animation when element is visible in viewport
-        if (elementPosition < windowHeight - 100) {
-            element.classList.add('is-visible');
+        if (boxPosition < windowHeight - 100) {
+            box.classList.add('is-scrolling');
+        }
+    });
+});
+
+// Scroll Animation for Conference Tracks
+document.addEventListener('scroll', () => {
+    const trackElements = document.querySelectorAll('.track');
+    const windowHeight = window.innerHeight;
+
+    trackElements.forEach(track => {
+        const trackPosition = track.getBoundingClientRect().top;
+
+        if (trackPosition < windowHeight - 100) {
+            track.style.opacity = '1';
+            track.style.transform = 'translateX(0)';
         }
     });
 });

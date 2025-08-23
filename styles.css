@@ -83,7 +83,7 @@ body {
 
 /* Objectives Section */
 #objectives {
-    height: 200vh; /* Extended section for smoother scrolling behavior */
+    height: 200vh; /* Extended height for scrolling */
     padding: 50px 20px;
     background-color: black;
     color: white;
@@ -96,12 +96,7 @@ body {
     margin: 40px 0;
     text-align: center;
     color: white;
-}
-
-/* Layer Styles */
-.layer {
-    width: 100%;
-    position: relative;
+    text-transform: uppercase;
 }
 
 /* Layer 1 (Static Boxes: A, B, C) */
@@ -121,23 +116,21 @@ body {
     font-size: 1.2rem;
 }
 
-/* Layer 2 (Dynamic Boxes: D, E) */
+/* Layer 2 (Scrolling Boxes: D, E) */
 .layer-2 {
     display: flex;
     justify-content: space-around;
-    position: relative; /* Dynamically positioned */
-    opacity: 1;
-    transition: transform 0.3s ease-in-out; /* Smooth movement effect */
+    position: relative; /* Scrolling over Layer 1 */
 }
 
-#box-d {
-    width: 300px;
-    height: 150px;
-    position: sticky;
-}
-
+#box-d,
 #box-e {
     width: 300px;
-    height: 150px;
-    position: sticky;
+    height: 160px;
+    background-color: #3A3A3A;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    text-align: center;
+    transform: translateY(0); /* Initial position */
+    transition: transform 0.2s linear; /* Smooth scrolling effect */
 }

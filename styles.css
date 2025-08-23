@@ -58,7 +58,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative; /* Required for beam-light to overlay */
+    position: relative; /* Required for beam-light overlay */
 }
 
 .conference-title {
@@ -90,7 +90,7 @@ body {
 
 /* Beam Light Effect */
 .beam-light {
-    position: absolute; /* Overlay on hero section */
+    position: absolute; /* Overlay hero section */
     width: 200px;
     height: 200px;
     background: radial-gradient(circle, rgba(255, 215, 0, 0.8), rgba(255, 215, 0, 0)); /* Yellow gold gradient */
@@ -117,13 +117,36 @@ body {
     }
 }
 
-/* Objectives Section (Preserved) */
-.layer {
-    display: flex;
-    justify-content: space-around;
+/* Objectives Section */
+.section-header {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: white;
 }
 
-/* Styling for dynamic boxes (D and E) */
+/* Layer 1 */
+.layer-1 {
+    display: flex;
+    justify-content: space-around; /* Spread horizontally */
+    margin-bottom: 50px;
+}
+
+.objective-box {
+    width: 300px;
+    height: 150px;
+    background-color: #2E2E2E;
+    border-radius: 15px;
+    text-align: center;
+    margin: 20px;
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Layer 2 */
 .dynamic-box {
-    transform: translateY(0); /* Keep upright initially */
+    transform: translateY(0); /* Add scrolling */
+    transition: transform 0.3s ease-in-out;
 }

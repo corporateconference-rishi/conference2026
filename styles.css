@@ -1,104 +1,103 @@
-/* Global Reset */
+/* Reset */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    color: white;
     scroll-behavior: smooth;
 }
 
-/* Section Styling - Each Section Matches Banner Size */
+/* Global Section Styles */
 section {
-    height: 100vh; /* Full-screen height for all sections */
-    background-color: black; /* Black backgrounds for seamless transitions */
-    color: white; /* White text for contrast */
-    padding: 70px 20px;
+    height: 100vh; /* Matches banner height */
+    background-color: black; /* Seamless transitions */
     text-align: center;
+    padding: 20px;
 }
 
-/* Section Headings */
 h2 {
-    font-size: 4rem; /* Big and bold headings for all sections */
-    margin-bottom: 30px;
-    color: #ff0055; /* Vibrant red heading color */
-}
-/* Objective Grid */
-.objective-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px;
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
-/* Fixed Boxes */
-.fixed-box {
-    position: relative;
+/* Hero Section */
+#hero {
+    background-image: url('./assets/banner.png'); /* Add your banner */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Makes beam-light relative */
+    color: white; /* Default font color */
 }
 
-/* Floating Boxes */
-.floating-box {
-    animation: float-up 5s infinite ease-in-out;
-    position: relative;
+.beam-light {
+    position: absolute;
+    width: 200px; /* Initial size */
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    animation: beam-animate 3s infinite ease-in-out; /* Continuous animation */
 }
 
-/* Floating Animation */
-@keyframes float-up {
-    0% {
-        transform: translateY(0px);
+@keyframes beam-animate {
+    0%, 100% {
+        transform: scale(1);
     }
-    100% {
-        transform: translateY(-20px);
+    50% {
+        transform: scale(1.4);
     }
 }
-.sponsor-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
+
+.conference-title {
+    font-size: 6rem;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    font-weight: bold;
+    z-index: 1; /* Above beam-light */
 }
 
-.sponsor img {
-    width: 200px;
-    height: auto;
-}
-.track-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.track {
-    background-color: #444;
-    width: 200px;
-    height: 100px;
-    margin: 10px;
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+.register-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease-in-out;
 }
 
-.track:hover {
+.register-btn:hover {
     background-color: #ff0055;
-    transform: scale(1.1);
+    color: white;
+    border-color: #ff0055;
 }
 
-#track-1, #track-2, #track-3 {
-    animation: slide-in-left 1.5s ease-in-out;
+/* Scroll-Based Animations */
+.track {
+    opacity: 0;
+    transform: translateX(-100px); /* Initially hidden */
 }
 
-@keyframes slide-in-left {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(0%);
-    }
+.track-left {
+    transform: translateX(-200px); /* Slightly offset */
 }
 
-#track-4, #track-5, #track-6 {
-    animation: slide-in-right 1.5s ease-in-out;
+.track-right {
+    transform: translateX(200px);
 }
 
-@keyframes slide-in-right {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(0%);
-    }
+.sponsor {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
-/* Trigger fresh deployment */
+
+/* JavaScript Animations Add This */
+.is-visible {
+    opacity: 1;
+    transform: translateX(0px); /* Slide/Neutral Position */
+}

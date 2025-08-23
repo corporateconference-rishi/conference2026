@@ -116,3 +116,14 @@ body {
         transform: scale(0.8);
     }
 }
+
+/* Objectives Section (Preserved) */
+.layer {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Styling for dynamic boxes (D and E) */
+.dynamic-box {
+    transform: translateY(0); /* Keep upright initially */
+}

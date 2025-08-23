@@ -7,96 +7,81 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Top Menu Bar -->
-    <header>
-        <div class="nav-logo">
-            <span class="logo-a">A</span>
-            <span class="logo-title">gNite'26</span>
-        </div>
-        <a href="https://forms.gle/example-google-form-link" class="register-btn">Register Now</a>
-    </header>
-
     <!-- Hero Section -->
     <section id="hero">
-        <h1 class="conference-title">AgNite 2026 Conference</h1>
-        <p class="subtitle">Forefront of Innovation, Commerce, and Artificial Intelligence</p>
+        <div class="hero-content">
+            <div class="beam-light"></div> <!-- Beaming Light -->
+            <h1 class="conference-title">AgNite 2026 Conference</h1>
+            <p class="subtitle">Forefront of Innovation, Commerce, and Artificial Intelligence</p>
+            <a href="#" class="register-btn">Register Now ➔</a>
+        </div>
     </section>
 
-    <!-- Section 1: About the Conference -->
-    <section id="about-conference">
-        <h2>About the Conference</h2>
-        <p>
-            The AgNite 2026 Conference is the premier event focusing on innovation, artificial intelligence, and commerce. Bringing together leaders from industries, academia, and technological spaces, AgNite 2026 offers a global platform for discussions, future-driven ideas, and impactful collaborations. Experts will share cutting-edge insights about AI's potential to solve global challenges and create sustainable growth. Join us and shape the future!
-        </p>
-    </section>
-
-    <!-- Section 2: Objectives of the Conference -->
+    <!-- Objectives Section -->
     <section id="objectives">
         <h2>Objectives of the Conference</h2>
         <div class="objective-grid">
             <!-- Fixed Boxes -->
-            <div class="objective-box fixed-box" id="box-a">
+            <div class="objective-box fixed-box">
                 <h3>A: Collaborative Research</h3>
-                <p>Promoting collaboration across industries.</p>
+                <p>Promoting innovation across industries.</p>
             </div>
-            <div class="objective-box fixed-box" id="box-b">
+            <div class="objective-box fixed-box">
                 <h3>B: Future Applications</h3>
-                <p>Exploring how AI reshapes global industries.</p>
+                <p>Exploring new AI applications globally.</p>
             </div>
-            <div class="objective-box fixed-box" id="box-c">
+            <div class="objective-box fixed-box">
                 <h3>C: Sustainability</h3>
-                <p>AI-driven approaches to sustainability.</p>
+                <p>Leveraging AI for sustainable development.</p>
             </div>
             <!-- Floating Boxes -->
-            <div class="objective-box floating-box" id="box-d">
+            <div class="objective-box floating-box">
                 <h3>D: Industry Partnerships</h3>
-                <p>Building partnerships for progress.</p>
+                <p>Establishing collaborations across industries.</p>
             </div>
-            <div class="objective-box floating-box" id="box-e">
+            <div class="objective-box floating-box">
                 <h3>E: Solving Global Challenges</h3>
-                <p>Using AI to tackle large-scale issues.</p>
+                <p>Using AI to tackle global issues.</p>
             </div>
         </div>
     </section>
 
-    <!-- Section 3: Our Sponsors -->
+    <!-- Sponsors Section -->
     <section id="sponsors">
         <h2>Our Sponsors</h2>
         <div class="sponsor-grid">
-            <a href="#" class="sponsor"><img src="./assets/sponsor1.png" alt="Sponsor 1"></a>
-            <a href="#" class="sponsor"><img src="./assets/sponsor2.png" alt="Sponsor 2"></a>
-            <a href="#" class="sponsor"><img src="./assets/sponsor3.png" alt="Sponsor 3"></a>
-            <a href="#" class="sponsor"><img src="./assets/sponsor4.png" alt="Sponsor 4"></a>
-            <a href="#" class="sponsor"><img src="./assets/sponsor5.png" alt="Sponsor 5"></a>
+            <div class="sponsor" data-animation="fade-in">Sponsor 1</div>
+            <div class="sponsor" data-animation="fade-in">Sponsor 2</div>
+            <div class="sponsor" data-animation="fade-in">Sponsor 3</div>
         </div>
     </section>
 
-    <!-- Section 4: Conference Tracks -->
+    <!-- Conference Tracks Section -->
     <section id="conference-tracks">
         <h2>Conference Tracks</h2>
-        <div class="track-grid">
-            <div class="track" id="track-1">Track 1</div>
-            <div class="track" id="track-2">Track 2</div>
-            <div class="track" id="track-3">Track 3</div>
-            <div class="track" id="track-4">Track 4</div>
-            <div class="track" id="track-5">Track 5</div>
-            <div class="track" id="track-6">Track 6</div>
-        </div>
+        <div class="track track-left" data-animation="slide-left">Track 1</div>
+        <div class="track track-left" data-animation="slide-left">Track 2</div>
+        <div class="track track-left" data-animation="slide-left">Track 3</div>
+        <div class="track track-right" data-animation="slide-right">Track 4</div>
+        <div class="track track-right" data-animation="slide-right">Track 5</div>
+        <div class="track track-right" data-animation="slide-right">Track 6</div>
     </section>
 
-    <!-- Section 5: Organizing Committee -->
+    <!-- Organizing Committee Section -->
     <section id="organizing-committee">
         <h2>Organizing Committee</h2>
         <div class="committee-grid">
             <div class="committee-member">
-                <a href="https://linkedin.com/dummyprofile1">
-                    <img src="./assets/committee1.png" alt="Member 1">
-                    Member 1
-                </a>
+                <img src="./assets/committee1.png" alt="Member 1">
+                <p>Member 1</p>
             </div>
-            <!-- Add more members -->
+            <div class="committee-member">
+                <img src="./assets/committee2.png" alt="Member 2">
+                <p>Member 2</p>
+            </div>
+            <!-- Add more members if needed -->
         </div>
     </section>
+    <script src="script.js"></script> <!-- Link JavaScript file -->
 </body>
 </html>
-<!-- Trigger new GitHub Pages deployment -->

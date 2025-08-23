@@ -1,27 +1,19 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const boxD = document.querySelector("#box-d");
-    const boxE = document.querySelector("#box-e");
-    const boxA = document.querySelector("#box-a");
-    const boxB = document.querySelector("#box-b");
-    const boxC = document.querySelector("#box-c");
+document.addEventListener('DOMContentLoaded', () => {
+    const layer2 = document.querySelector('.layer-2'); // Layer 2 with Box D and E
+    const layer1 = document.querySelector('.layer-1'); // Layer 1 containing Boxes A, B, and C
 
-    document.addEventListener("scroll", () => {
+    document.addEventListener('scroll', () => {
+        const layer1Height = layer1.offsetHeight; // Total height of Layer 1
+        const threshold = layer1Height * 0.65; // 65% of Layer 1 height
         const scrollY = window.scrollY;
 
-        // Stop Box D at Box A
-        const boxAStopPoint = boxA.offsetTop;
-        if (scrollY + boxD.offsetHeight <= boxAStopPoint) {
-            boxD.style.transform = `translateY(${scrollY}px)`;
+        // Attach Layer 2 when it reaches 65% height of Layer 1
+        if (scrollY >= threshold) {
+            layer2.style.position = 'absolute';
+            layer2.style.top = `${threshold}px`;
         } else {
-            boxD.style.transform = `translateY(${boxAStopPoint - boxD.offsetHeight}px)`;
-        }
-
-        // Stop Box E at Boxes B and C
-        const boxBCStopPoint = boxB.offsetTop; // Stop point overlaps both B and C
-        if (scrollY + boxE.offsetHeight <= boxBCStopPoint) {
-            boxE.style.transform = `translateY(${scrollY}px)`;
-        } else {
-            boxE.style.transform = `translateY(${boxBCStopPoint - boxE.offsetHeight}px)`;
+            layer2.style.position = 'sticky';
+            layer2.style.top = '200px'; // Reset position
         }
     });
 });

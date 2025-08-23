@@ -1,23 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const boxD = document.querySelector('#box-d'); // Select Box D
-    const boxE = document.querySelector('#box-e'); // Select Box E
+    const boxD = document.querySelector('#box-d');
+    const boxE = document.querySelector('#box-e');
+    const boxA = document.querySelector('#box-a');
+    const boxB = document.querySelector('#box-b');
 
-    // Event Listener for Scrolling
     document.addEventListener('scroll', () => {
-        const scrollY = window.scrollY; // Get scroll position
+        const scrollY = window.scrollY;
 
-        // Scroll-controlled movement for Box D
-        if (scrollY > 50 && scrollY < 300) {
+        // Stop Box D at Box A
+        if (scrollY < boxA.offsetTop - 100) {
             boxD.classList.add('scrolled');
         } else {
             boxD.classList.remove('scrolled');
+            boxD.classList.add('stop');
         }
 
-        // Scroll-controlled movement for Box E
-        if (scrollY > 150 && scrollY < 400) {
+        // Stop Box E at Box B and C
+        if (scrollY < boxB.offsetTop - 100) {
             boxE.classList.add('scrolled');
         } else {
             boxE.classList.remove('scrolled');
+            boxE.classList.add('stop');
         }
     });
 });

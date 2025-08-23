@@ -1,19 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll Animation for Box D
-    document.addEventListener('scroll', () => {
-        const boxD = document.querySelector('#box-d');
-        const boxDPosition = boxD.getBoundingClientRect().top;
-        if (boxDPosition < window.innerHeight - 100) {
-            boxD.classList.add('scrolled');
-        }
-    });
+    const boxD = document.querySelector('#box-d'); // Select Box D
+    const boxE = document.querySelector('#box-e'); // Select Box E
 
-    // Scroll Animation for Box E
+    // Event Listener for Scrolling
     document.addEventListener('scroll', () => {
-        const boxE = document.querySelector('#box-e');
-        const boxEPosition = boxE.getBoundingClientRect().top;
-        if (boxEPosition < window.innerHeight - 100) {
+        const scrollY = window.scrollY; // Get scroll position
+
+        // Scroll-controlled movement for Box D
+        if (scrollY > 50 && scrollY < 300) {
+            boxD.classList.add('scrolled');
+        } else {
+            boxD.classList.remove('scrolled');
+        }
+
+        // Scroll-controlled movement for Box E
+        if (scrollY > 150 && scrollY < 400) {
             boxE.classList.add('scrolled');
+        } else {
+            boxE.classList.remove('scrolled');
         }
     });
 });

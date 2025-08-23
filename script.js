@@ -7,14 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollY = window.scrollY;
         const layer1Top = layer1.offsetTop;
 
-        // Smooth scrolling for Box D (faster)
+        // Smooth animation for Box D
         if (scrollY >= layer1Top * 0.5) {
-            boxD.style.transform = `translateY(-${(scrollY - layer1Top * 0.5) * 0.5}px)`;
+            const relativeScrollD = (scrollY - layer1Top * 0.5) / 1.5;
+            boxD.style.transform = `translateY(-${Math.min(relativeScrollD, 100)}px)`;
         }
 
-        // Smooth scrolling for Box E (slower)
-        if (scrollY >= layer1Top * 0.7) {
-            boxE.style.transform = `translateY(-${(scrollY - layer1Top * 0.7) * 0.3}px)`;
+        // Smooth animation for Box E
+        if (scrollY >= layer1Top * 0.5) {
+            const relativeScrollE = (scrollY - layer1Top * 0.5) / 2;
+            boxE.style.transform = `translateY(-${Math.min(relativeScrollE, 100)}px)`;
         }
     });
 });

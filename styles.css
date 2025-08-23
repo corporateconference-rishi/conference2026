@@ -113,36 +113,49 @@ body {
     padding: 50px 20px;
 }
 
+h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
 .objective-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     position: relative;
-    margin-top: 30px;
 }
 
-/.fixed-box {
-    width: 200px;
-    height: 200px;
-    background-color: #222;
-    color: white;
-    border-radius: 10px;
-    padding: 20px;
-    text-transform: uppercase;
-    text-align: center;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.fixed-box:hover {
-    background-color: #ff0055;
-}
-
-/.floating-box {
+.larger-box {
     width: 400px;
-    height: 200px;
-    background-color: #444;
-    color: white;
-    border-radius: 10px;
+    height: 150px;
+    background-color: #CCCCCC;
+    color: black;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.smaller-box {
+    width: 200px;
+    height: 150px;
+    background-color: #CCCCCC;
+    color: black;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.floating-box {
+    width: 400px;
+    height: 150px;
+    background-color: #CCCCCC;
+    color: black;
+    border-radius: 20px;
     padding: 20px;
     position: absolute;
     left: 50%;
@@ -151,51 +164,78 @@ body {
     transition: opacity 0.5s ease, transform 1s ease-in-out;
 }
 
+.combined-box {
+    width: 600px;
+    height: 150px;
+    background-color: #CCCCCC;
+    color: black;
+    border-radius: 20px;
+    padding: 20px;
+    position: absolute;
+    left: calc(50% - 300px);
+    transform: translateY(200px);
+    opacity: 0;
+}
+
+/* Hover Effects */
+.objective-box:hover {
+    background-color: #AAAAAA;
+}
+
 .is-scrolling {
     opacity: 1;
     transform: translateY(-100px);
 }
 
 /* Conference Tracks Section */
-.track-grid {
+#conference-tracks {
+    height: 150vh;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.track-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
 }
 
 .track {
     display: inline-block;
-    width: 200px;
-    height: 100px;
-    background-color: #222;
+    width: 250px;
+    min-height: 150px;
+    background-color: #333333;
     color: white;
-    border-radius: 10px;
+    border-radius: 20px;
+    padding: 20px;
     font-size: 1.2rem;
     text-align: center;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
     opacity: 0;
-    transform: translateX(0);
-    transition: background-color 0.3s ease, opacity 0.5s ease, transform 1s ease-in-out;
+    transform: translateY(50px);
 }
 
 .track:hover {
     background-color: #6D3BD8;
+    transform: scale(1.05);
 }
 
 .track-left {
-    transform: translateX(-100px);
-    animation: slide-in-left 1.5s ease forwards;
+    animation: slide-in-left 1.2s ease forwards;
 }
 
 .track-right {
-    transform: translateX(100px);
-    animation: slide-in-right 1.5s ease forwards;
+    animation: slide-in-right 1.2s ease forwards;
 }
 
 @keyframes slide-in-left {
     0% {
-        transform: translateX(-100px);
+        transform: translateX(-50px);
         opacity: 0;
     }
     100% {
@@ -206,7 +246,7 @@ body {
 
 @keyframes slide-in-right {
     0% {
-        transform: translateX(100px);
+        transform: translateX(50px);
         opacity: 0;
     }
     100% {
@@ -216,15 +256,15 @@ body {
 }
 
 .read-more-btn {
-    margin-top: 20px;
+    display: inline-block;
+    margin-top: 30px;
     padding: 12px 30px;
-    background-color: #333;
+    background-color: #222222;
     color: white;
-    border: 2px solid white;
     text-decoration: none;
     border-radius: 5px;
     font-size: 1.2rem;
-    transition: all 0.3s ease-in-out;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .read-more-btn:hover {

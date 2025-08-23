@@ -7,13 +7,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Top Menu Bar -->
+    <header class="top-menu">
+        <div class="logo">AgNite 26</div>
+        <a href="#" class="register-button-top">Register</a>
+    </header>
+
     <!-- Hero Section -->
     <section id="hero">
         <div class="hero-content">
             <div class="beam-light"></div> <!-- Beaming Light -->
             <h1 class="conference-title">AgNite 2026 Conference</h1>
             <p class="subtitle">Forefront of Innovation, Commerce, and Artificial Intelligence</p>
-            <a href="#" class="register-btn">Register Now ➔</a>
+            <a href="#" class="learn-more-btn">Learn More ➔</a>
         </div>
     </section>
 
@@ -21,67 +27,50 @@
     <section id="objectives">
         <h2>Objectives of the Conference</h2>
         <div class="objective-grid">
-            <!-- Fixed Boxes -->
-            <div class="objective-box fixed-box">
+            <!-- Fixed Boxes (Top Row) -->
+            <div class="objective-box fixed-box" id="box-a">
                 <h3>A: Collaborative Research</h3>
                 <p>Promoting innovation across industries.</p>
             </div>
-            <div class="objective-box fixed-box">
+            <div class="objective-box fixed-box" id="box-b">
                 <h3>B: Future Applications</h3>
                 <p>Exploring new AI applications globally.</p>
             </div>
-            <div class="objective-box fixed-box">
+            <div class="objective-box fixed-box" id="box-c">
                 <h3>C: Sustainability</h3>
                 <p>Leveraging AI for sustainable development.</p>
             </div>
-            <!-- Floating Boxes -->
-            <div class="objective-box floating-box">
+
+            <!-- Floating Boxes (Scroll Effect) -->
+            <div class="objective-box floating-box" id="box-d">
                 <h3>D: Industry Partnerships</h3>
                 <p>Establishing collaborations across industries.</p>
             </div>
-            <div class="objective-box floating-box">
+            <div class="objective-box floating-box" id="box-e">
                 <h3>E: Solving Global Challenges</h3>
                 <p>Using AI to tackle global issues.</p>
             </div>
         </div>
     </section>
 
-    <!-- Sponsors Section -->
-    <section id="sponsors">
-        <h2>Our Sponsors</h2>
-        <div class="sponsor-grid">
-            <div class="sponsor" data-animation="fade-in">Sponsor 1</div>
-            <div class="sponsor" data-animation="fade-in">Sponsor 2</div>
-            <div class="sponsor" data-animation="fade-in">Sponsor 3</div>
-        </div>
-    </section>
-
     <!-- Conference Tracks Section -->
     <section id="conference-tracks">
         <h2>Conference Tracks</h2>
-        <div class="track track-left" data-animation="slide-left">Track 1</div>
-        <div class="track track-left" data-animation="slide-left">Track 2</div>
-        <div class="track track-left" data-animation="slide-left">Track 3</div>
-        <div class="track track-right" data-animation="slide-right">Track 4</div>
-        <div class="track track-right" data-animation="slide-right">Track 5</div>
-        <div class="track track-right" data-animation="slide-right">Track 6</div>
-    </section>
+        <div class="track-grid">
+            <!-- Tracks 1, 2, 3 float in from the left -->
+            <div class="track track-left">Track 1: Flexible Platform</div>
+            <div class="track track-left">Track 2: Fully Secured</div>
+            <div class="track track-left">Track 3: Time Saver</div>
 
-    <!-- Organizing Committee Section -->
-    <section id="organizing-committee">
-        <h2>Organizing Committee</h2>
-        <div class="committee-grid">
-            <div class="committee-member">
-                <img src="./assets/committee1.png" alt="Member 1">
-                <p>Member 1</p>
-            </div>
-            <div class="committee-member">
-                <img src="./assets/committee2.png" alt="Member 2">
-                <p>Member 2</p>
-            </div>
-            <!-- Add more members if needed -->
+            <!-- Tracks 4, 5, 6 float in from the right -->
+            <div class="track track-right">Track 4: Keep Track</div>
+            <div class="track track-right">Track 5: More Focus</div>
+            <div class="track track-right">Track 6: Easy Deploy</div>
         </div>
+        <a href="#" class="read-more-btn">Read More ➔</a>
     </section>
-    <script src="script.js"></script> <!-- Link JavaScript file -->
+    
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
 </body>
 </html>

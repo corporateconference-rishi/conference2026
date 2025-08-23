@@ -1,19 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const layer2 = document.querySelector('.layer-2'); // Layer 2 with Box D and E
-    const layer1 = document.querySelector('.layer-1'); // Layer 1 containing Boxes A, B, and C
+document.addEventListener("DOMContentLoaded", () => {
+    const boxD = document.querySelector("#box-d");
+    const boxE = document.querySelector("#box-e");
+    const layer1 = document.querySelector(".layer-1");
 
-    document.addEventListener('scroll', () => {
-        const layer1Height = layer1.offsetHeight; // Total height of Layer 1
-        const threshold = layer1Height * 0.65; // 65% of Layer 1 height
+    document.addEventListener("scroll", () => {
+        const layer1Top = layer1.offsetTop;
         const scrollY = window.scrollY;
 
-        // Attach Layer 2 when it reaches 65% height of Layer 1
-        if (scrollY >= threshold) {
-            layer2.style.position = 'absolute';
-            layer2.style.top = `${threshold}px`;
-        } else {
-            layer2.style.position = 'sticky';
-            layer2.style.top = '200px'; // Reset position
+        // Smoothly scroll Boxes D and E upward
+        boxD.style.transform = `translateY(${scrollY * 0.5}px)`; // Adjust speed
+        boxE.style.transform = `translateY(${scrollY * 0.3}px)`; // Adjust speed
+
+        // Overlap Layer 1 content (65% coverage)
+        if (scrollY >= layer1Top * 0.65) {
+            boxD.style.transform = `translateY(${layer1.offsetHeight * -0.65}px)`;
+            boxE.style.transform = `translateY(${layer1.offsetHeight * -0.65}px)`;
         }
     });
 });

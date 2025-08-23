@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll Behavior for 'Learn More'
+    // Smooth scrolling for Learn More button
     const learnMoreButton = document.querySelector('.learn-more-btn');
     const objectivesSection = document.querySelector('#objectives');
 

@@ -1,20 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const boxD = document.querySelector("#box-d");
-    const boxE = document.querySelector("#box-e");
-    const layer1 = document.querySelector(".layer-1");
+document.addEventListener('DOMContentLoaded', () => {
+    const boxD = document.querySelector('#box-d');
+    const boxE = document.querySelector('#box-e');
+    const layer1 = document.querySelector('.layer-1');
 
-    document.addEventListener("scroll", () => {
-        const layer1Top = layer1.offsetTop;
+    document.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
+        const layer1Top = layer1.offsetTop;
 
-        // Smoothly scroll Boxes D and E upward
-        boxD.style.transform = `translateY(${scrollY * 0.5}px)`; // Adjust speed
-        boxE.style.transform = `translateY(${scrollY * 0.3}px)`; // Adjust speed
+        // Smooth scrolling for Box D (faster)
+        if (scrollY >= layer1Top * 0.5) {
+            boxD.style.transform = `translateY(-${(scrollY - layer1Top * 0.5) * 0.5}px)`;
+        }
 
-        // Overlap Layer 1 content (65% coverage)
-        if (scrollY >= layer1Top * 0.65) {
-            boxD.style.transform = `translateY(${layer1.offsetHeight * -0.65}px)`;
-            boxE.style.transform = `translateY(${layer1.offsetHeight * -0.65}px)`;
+        // Smooth scrolling for Box E (slower)
+        if (scrollY >= layer1Top * 0.7) {
+            boxE.style.transform = `translateY(-${(scrollY - layer1Top * 0.7) * 0.3}px)`;
         }
     });
 });

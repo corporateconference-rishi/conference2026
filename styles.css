@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     scroll-behavior: smooth;
-    background-color: black;
+    background-color: black; /* Entire page black background */
 }
 
 /* Top Menu Bar */
@@ -14,7 +14,8 @@ body {
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
-    background: rgba(0, 0, 0, 0.65);
+    align-items: center;
+    background: rgba(0, 0, 0, 0.65); /* Transparent black menu bar */
     z-index: 10;
 }
 
@@ -43,7 +44,9 @@ body {
 /* Hero Section */
 #hero {
     height: 100vh;
-    background-color: black;
+    background-image: url('./assets/banner.png'); /* Ensure banner visibility */
+    background-size: cover;
+    background-position: center;
     text-align: center;
     color: white;
     display: flex;
@@ -97,20 +100,20 @@ h2 {
 .objective-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 30px; /* Space between boxes */
 }
 
 /* Top-row Boxes (Static Layout: A, B, C) */
 .fixed-box {
     width: 350px;
-    height: 200px; /* Shorter but longer (height-wise) */
+    height: 250px; /* Sized correctly */
     background-color: #2E2E2E;
     color: white;
-    border-radius: 15px;
+    border-radius: 15px; /* Rounded edges */
     padding: 20px;
     text-align: center;
     font-size: 1.2rem;
-    position: sticky;
+    position: sticky; /* Fixed to viewport */
     top: 100px;
     z-index: 1;
 }
@@ -130,10 +133,10 @@ h2 {
 
 #box-d {
     width: 350px;
-    height: 250px; /* Longer height */
+    height: 250px; /* Match Box A height */
 }
 
 #box-e {
-    width: 700px; /* Combined width of B and C */
-    height: 250px; /* Longer height */
+    width: 700px; /* Combined width of Box B and Box C */
+    height: 250px; /* Match collective height */
 }

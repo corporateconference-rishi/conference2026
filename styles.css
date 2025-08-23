@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     scroll-behavior: smooth;
-    background-color: black; /* Set global background to black */
+    background-color: black;
 }
 
 /* Top Menu Bar */
@@ -14,8 +14,7 @@ body {
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.65); /* Transparent black menu bar */
+    background: rgba(0, 0, 0, 0.65);
     z-index: 10;
 }
 
@@ -43,7 +42,7 @@ body {
 
 /* Hero Section */
 #hero {
-    height: 100vh; /* Full height for hero section */
+    height: 100vh;
     background-color: black;
     text-align: center;
     color: white;
@@ -82,7 +81,7 @@ body {
 
 /* Objectives Section */
 #objectives {
-    height: 200vh; /* Large section for scrollable behavior */
+    height: 200vh;
     padding: 50px 20px;
     background-color: black;
     color: white;
@@ -91,51 +90,50 @@ body {
 
 h2 {
     font-size: 3.5rem;
-    margin-bottom: 40px; /* Space below heading */
+    margin-bottom: 40px;
 }
 
 /* Objective Grid */
 .objective-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Top boxes align horizontally */
-    gap: 30px; /* Space between boxes */
-    position: relative; /* Needed for dynamic positioning of moving boxes */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
 }
 
-/* Fixed Boxes (Top Row: A, B, C) */
+/* Top-row Boxes (Static Layout: A, B, C) */
 .fixed-box {
-    width: 300px;
-    height: 200px; /* Fixed box dimensions */
-    background-color: #2E2E2E; /* Matte dark grey */
+    width: 400px;
+    height: 150px; /* Shorter but longer */
+    background-color: rgba(46, 46, 46, 1);
     color: white;
     border-radius: 15px;
     padding: 20px;
     text-align: center;
     font-size: 1.2rem;
-    position: sticky; /* Fixes them at the top */
+    position: sticky;
     top: 100px;
     z-index: 1;
 }
 
-/* Dynamic Boxes (Scrollable D and E) */
+/* Bottom-row Boxes (Scrollable D and E) */
 .moving-box {
-    background-color: #3A3A3A; /* Slightly lighter color for scrolling boxes */
+    background-color: #3A3A3A;
     color: white;
     border-radius: 15px;
     padding: 20px;
     text-align: center;
     font-size: 1.2rem;
-    position: absolute; /* Allows movement behavior */
+    position: absolute;
     z-index: 2;
-    transition: transform 0.5s ease; /* Smooth movement while scrolling */
+    transition: transform 0.5s ease;
 }
 
 #box-d {
-    width: 300px;
-    height: 200px; /* Same size as A */
+    width: 400px;
+    height: 150px;
 }
 
 #box-e {
-    width: 600px;
-    height: 200px; /* Combined width of B and C */
+    width: 800px; /* Combined width of B and C */
+    height: 150px; /* Match the height of Boxes B and C */
 }

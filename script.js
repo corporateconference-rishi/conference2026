@@ -5,23 +5,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const boxB = document.querySelector('#box-b');
 
     document.addEventListener('scroll', () => {
-        const boxAOffsetTop = boxA.offsetTop + boxA.offsetHeight; // Stop point for D
-        const boxBOffsetTop = boxB.offsetTop + boxB.offsetHeight; // Stop point for E
+        const boxAOffsetTop = boxA.offsetTop + boxA.offsetHeight;
+        const boxBCOffsetTop = boxB.offsetTop + boxB.offsetHeight;
 
         const scrollY = window.scrollY;
 
-        // Box D scroll control
+        // Box D scroll logic
         if (scrollY + boxD.offsetHeight < boxAOffsetTop) {
             boxD.style.transform = `translateY(${scrollY}px)`;
         } else {
             boxD.style.transform = `translateY(${boxAOffsetTop - boxD.offsetHeight}px)`;
         }
 
-        // Box E scroll control
-        if (scrollY + boxE.offsetHeight < boxBOffsetTop) {
+        // Box E scroll logic
+        if (scrollY + boxE.offsetHeight < boxBCOffsetTop) {
             boxE.style.transform = `translateY(${scrollY}px)`;
         } else {
-            boxE.style.transform = `translateY(${boxBOffsetTop - boxE.offsetHeight}px)`;
+            boxE.style.transform = `translateY(${boxBCOffsetTop - boxE.offsetHeight}px)`;
         }
     });
 });

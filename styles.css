@@ -83,32 +83,36 @@ body {
 
 /* Objectives Section */
 #objectives {
-    height: 200vh;
+    height: 200vh; /* Extended section for smoother scrolling behavior */
     padding: 50px 20px;
     background-color: black;
     color: white;
     text-align: center;
-    position: relative;
+}
+
+.section-header {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 40px 0;
+    text-align: center;
+    color: white;
 }
 
 /* Layer Styles */
 .layer {
-    position: absolute;
     width: 100%;
+    position: relative;
 }
 
-/* Layer 1 (Boxes A, B, C) */
+/* Layer 1 (Static Boxes: A, B, C) */
 .layer-1 {
-    top: 0;
     display: flex;
-    justify-content: space-around; /* Horizontally align boxes */
-    height: 300px; /* Height for Layer 1 */
-    width: 100%;
+    justify-content: space-around;
 }
 
 .objective-box {
-    width: 300px; /* Adjust box width */
-    height: 150px; /* Adjust box height */
+    width: 300px;
+    height: 150px;
     background-color: #2E2E2E;
     color: white;
     margin: 20px;
@@ -117,21 +121,23 @@ body {
     font-size: 1.2rem;
 }
 
-/* Layer 2 (Boxes D, E covering 65%) */
+/* Layer 2 (Dynamic Boxes: D, E) */
 .layer-2 {
-    top: 200px; /* Starts below Layer 1 */
     display: flex;
-    justify-content: space-around; /* Horizontally align boxes */
-    position: sticky; /* Layer scroll effect */
+    justify-content: space-around;
+    position: relative; /* Dynamically positioned */
+    opacity: 1;
+    transition: transform 0.3s ease-in-out; /* Smooth movement effect */
 }
 
-/* Styling for Box D and Box E */
 #box-d {
     width: 300px;
-    height: 180px;
+    height: 150px;
+    position: sticky;
 }
 
 #box-e {
     width: 300px;
-    height: 180px;
+    height: 150px;
+    position: sticky;
 }

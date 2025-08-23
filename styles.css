@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     scroll-behavior: smooth;
-    background-color: black; /* Entire page black background */
+    background-color: black;
 }
 
 /* Top Menu Bar */
@@ -14,8 +14,7 @@ body {
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.65); /* Transparent black menu bar */
+    background: rgba(0, 0, 0, 0.65);
     z-index: 10;
 }
 
@@ -44,7 +43,7 @@ body {
 /* Hero Section */
 #hero {
     height: 100vh;
-    background-image: url('./assets/banner.png'); /* Ensure banner visibility */
+    background-image: url('./assets/banner.png');
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -89,54 +88,50 @@ body {
     background-color: black;
     color: white;
     text-align: center;
+    position: relative;
 }
 
-h2 {
-    font-size: 3.5rem;
-    margin-bottom: 40px;
+/* Layer Styles */
+.layer {
+    position: absolute;
+    width: 100%;
 }
 
-/* Objective Grid */
-.objective-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px; /* Space between boxes */
+/* Layer 1 (Boxes A, B, C) */
+.layer-1 {
+    top: 0;
+    display: flex;
+    justify-content: space-around; /* Horizontally align boxes */
+    height: 300px; /* Height for Layer 1 */
+    width: 100%;
 }
 
-/* Top-row Boxes (Static Layout: A, B, C) */
-.fixed-box {
-    width: 350px;
-    height: 250px; /* Sized correctly */
+.objective-box {
+    width: 300px; /* Adjust box width */
+    height: 150px; /* Adjust box height */
     background-color: #2E2E2E;
     color: white;
-    border-radius: 15px; /* Rounded edges */
-    padding: 20px;
-    text-align: center;
-    font-size: 1.2rem;
-    position: sticky; /* Fixed to viewport */
-    top: 100px;
-    z-index: 1;
-}
-
-/* Bottom-row Boxes (Scrollable D and E) */
-.moving-box {
-    background-color: #3A3A3A;
-    color: white;
+    margin: 20px;
     border-radius: 15px;
-    padding: 20px;
     text-align: center;
     font-size: 1.2rem;
-    position: absolute;
-    z-index: 2;
-    transition: transform 0.5s ease;
 }
 
+/* Layer 2 (Boxes D, E covering 65%) */
+.layer-2 {
+    top: 200px; /* Starts below Layer 1 */
+    display: flex;
+    justify-content: space-around; /* Horizontally align boxes */
+    position: sticky; /* Layer scroll effect */
+}
+
+/* Styling for Box D and Box E */
 #box-d {
-    width: 350px;
-    height: 250px; /* Match Box A height */
+    width: 300px;
+    height: 180px;
 }
 
 #box-e {
-    width: 700px; /* Combined width of Box B and Box C */
-    height: 250px; /* Match collective height */
+    width: 300px;
+    height: 180px;
 }

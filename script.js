@@ -1,28 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const boxD = document.querySelector('#box-d'); // Dynamic Box D
-    const boxE = document.querySelector('#box-e'); // Dynamic Box E
-    const boxA = document.querySelector('#box-a'); // Fixed Box A
-    const boxB = document.querySelector('#box-b'); // Fixed Box B
+    const boxD = document.querySelector('#box-d');
+    const boxE = document.querySelector('#box-e');
+    const boxA = document.querySelector('#box-a');
+    const boxB = document.querySelector('#box-b');
 
-    // Track scroll behavior
     document.addEventListener('scroll', () => {
-        const boxDStop = boxA.offsetTop; // Box D stops at Box A's top offset
-        const boxEStop = boxB.offsetTop; // Box E stops at Box B and C's combined top offset
+        const boxAOffsetTop = boxA.offsetTop + boxA.offsetHeight; // Stop point for D
+        const boxBOffsetTop = boxB.offsetTop + boxB.offsetHeight; // Stop point for E
 
-        const scrollY = window.scrollY; // User's current scroll position
+        const scrollY = window.scrollY;
 
-        // Box D behavior: Align to Box A and stop
-        if (scrollY < boxDStop - 200) {
+        // Box D scroll control
+        if (scrollY + boxD.offsetHeight < boxAOffsetTop) {
             boxD.style.transform = `translateY(${scrollY}px)`;
         } else {
-            boxD.style.transform = `translateY(${boxDStop}px)`;
+            boxD.style.transform = `translateY(${boxAOffsetTop - boxD.offsetHeight}px)`;
         }
 
-        // Box E behavior: Align to Box B+C and stop
-        if (scrollY < boxEStop - 200) {
+        // Box E scroll control
+        if (scrollY + boxE.offsetHeight < boxBOffsetTop) {
             boxE.style.transform = `translateY(${scrollY}px)`;
         } else {
-            boxE.style.transform = `translateY(${boxEStop}px)`;
+            boxE.style.transform = `translateY(${boxBOffsetTop - boxE.offsetHeight}px)`;
         }
     });
 });

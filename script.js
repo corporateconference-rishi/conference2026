@@ -3,25 +3,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const boxE = document.querySelector('#box-e');
     const boxA = document.querySelector('#box-a');
     const boxB = document.querySelector('#box-b');
+    const boxC = document.querySelector('#box-c');
 
     document.addEventListener('scroll', () => {
-        const boxAOffsetTop = boxA.offsetTop + boxA.offsetHeight;
-        const boxBCOffsetTop = boxB.offsetTop + boxB.offsetHeight;
+        const boxAOffset = boxA.offsetTop;
+        const boxBOffset = boxB.offsetTop;
+        const boxCOffset = boxC.offsetTop;
 
         const scrollY = window.scrollY;
 
-        // Box D scroll logic
-        if (scrollY + boxD.offsetHeight < boxAOffsetTop) {
+        // Box D: Stop scrolling when it overlaps Box A
+        if (scrollY + boxD.offsetHeight <= boxAOffset) {
             boxD.style.transform = `translateY(${scrollY}px)`;
         } else {
-            boxD.style.transform = `translateY(${boxAOffsetTop - boxD.offsetHeight}px)`;
+            boxD.style.transform = `translateY(${boxAOffset - boxD.offsetHeight}px)`;
         }
 
-        // Box E scroll logic
-        if (scrollY + boxE.offsetHeight < boxBCOffsetTop) {
+        // Box E: Stop scrolling when it overlaps Boxes B and C
+        const boxBCCombinedOffset = Math.min(boxBOffset, boxCOffset); // Topmost position between B/C
+        if (scrollY + boxE.offsetHeight <= boxBCCombinedOffset) {
             boxE.style.transform = `translateY(${scrollY}px)`;
         } else {
-            boxE.style.transform = `translateY(${boxBCOffsetTop - boxE.offsetHeight}px)`;
+            boxE.style.transform = `translateY(${boxBCCombinedOffset - boxE.offsetHeight}px)`;
         }
     });
 });

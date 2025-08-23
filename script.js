@@ -8,15 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const layer1Top = layer1.offsetTop;
 
         // Smooth animation for Box D
-        if (scrollY >= layer1Top * 0.5) {
-            const relativeScrollD = (scrollY - layer1Top * 0.5) / 1.5;
-            boxD.style.transform = `translateY(-${Math.min(relativeScrollD, 100)}px)`;
-        }
+        const relativeScrollD = Math.min((scrollY - layer1Top * 0.6) * 0.4, 100);
+        boxD.style.transform = `translateY(-${relativeScrollD}px)`;
 
         // Smooth animation for Box E
-        if (scrollY >= layer1Top * 0.5) {
-            const relativeScrollE = (scrollY - layer1Top * 0.5) / 2;
-            boxE.style.transform = `translateY(-${Math.min(relativeScrollE, 100)}px)`;
-        }
+        const relativeScrollE = Math.min((scrollY - layer1Top * 0.6) * 0.4, 100);
+        boxE.style.transform = `translateY(-${relativeScrollE}px)`;
     });
 });

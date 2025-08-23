@@ -1,12 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for Learn More button
-    const learnMoreButton = document.querySelector('.learn-more-btn');
-    const objectivesSection = document.querySelector('#objectives');
+document.addEventListener("DOMContentLoaded", () => {
+    const learnMoreButton = document.querySelector(".learn-more-btn");
+    const objectivesSection = document.querySelector("#objectives");
 
-    learnMoreButton.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent default anchor behavior
+    learnMoreButton.addEventListener("click", (e) => {
+        e.preventDefault();
         objectivesSection.scrollIntoView({
-            behavior: 'smooth', // Smooth scrolling
+            behavior: "smooth",
         });
     });
 });

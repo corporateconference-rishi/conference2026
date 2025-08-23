@@ -1,150 +1,18 @@
-/* Reset */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    scroll-behavior: smooth;
-    background-color: black;
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const boxD = document.querySelector('#box-d');
+    const boxE = document.querySelector('#box-e');
+    const layer1 = document.querySelector('.layer-1');
 
-/* Top Menu Bar */
-.top-menu {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    background: rgba(0, 0, 0, 0.65);
-    z-index: 10;
-}
+    document.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const layer1Top = layer1.offsetTop;
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white;
-}
+        // Smooth animation for Box D
+        const relativeScrollD = Math.min((scrollY - layer1Top * 0.6) * 0.4, 100);
+        boxD.style.transform = `translateY(-${relativeScrollD}px)`;
 
-.register-button-top {
-    padding: 10px 25px;
-    background-color: transparent;
-    border: 2px solid white;
-    color: white;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-}
-
-.register-button-top:hover {
-    background-color: white;
-    color: black;
-}
-
-/* Hero Section */
-#hero {
-    height: 100vh;
-    background-image: url('./assets/banner.png');
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.conference-title {
-    font-size: 5rem;
-    font-weight: bold;
-}
-
-.subtitle {
-    font-size: 2rem;
-    margin-top: 10px;
-}
-
-.learn-more-btn {
-    margin-top: 20px;
-    padding: 12px 30px;
-    font-size: 1.2rem;
-    border: 2px solid white;
-    background-color: transparent;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.learn-more-btn:hover {
-    background: linear-gradient(to right, #ff0055, #36007d);
-    color: white;
-}
-
-/* Objectives Section */
-#objectives {
-    height: 200vh;
-    padding: 50px 20px;
-    background-color: black;
-    color: white;
-    text-align: center;
-}
-
-.section-header {
-    font-size: 3.5rem;
-    font-weight: bold;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    text-align: center;
-    color: white;
-}
-
-/* Layer 1: Boxes A, B, C */
-.layer-1 {
-    display: flex;
-    justify-content: space-between; /* Spread horizontally */
-    margin-bottom: 50px;
-}
-
-.objective-box {
-    width: 300px;
-    height: 150px;
-    background-color: #2E2E2E;
-    text-align: center;
-    border-radius: 15px;
-    margin: 20px;
-    font-size: 1.2rem;
-    color: white;
-}
-
-/* Layer 2: Dynamic Boxes D, E */
-.layer-2 {
-    display: flex;
-    justify-content: space-between; /* Spread D and E horizontally */
-    margin-top: 75px;
-    position: relative;
-}
-
-#box-d {
-    width: 300px;
-    height: 160px;
-    background-color: #3A3A3A;
-    border-radius: 15px;
-    text-align: center;
-    /* Align in the middle of Box A and Box B */
-    transform: translateX(175px); /* Center between A and B */
-    position: absolute;
-    transition: transform 0.3s ease-in-out; /* Smooth scrolling */
-}
-
-#box-e {
-    width: 300px;
-    height: 160px;
-    background-color: #3A3A3A;
-    border-radius: 15px;
-    text-align: center;
-    /* Align in the middle of Box B and Box C */
-    transform: translateX(475px); /* Center between B and C */
-    position: absolute;
-    transition: transform 0.3s ease-in-out; /* Smooth scrolling */
-}
+        // Smooth animation for Box E
+        const relativeScrollE = Math.min((scrollY - layer1Top * 0.6) * 0.4, 100);
+        boxE.style.transform = `translateY(-${relativeScrollE}px)`;
+    });
+});

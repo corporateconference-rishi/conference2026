@@ -7,7 +7,7 @@ document.addEventListener('scroll', () => {
         const boxPosition = box.getBoundingClientRect().top;
 
         if (boxPosition < windowHeight - 100) {
-            box.classList.add('is-scrolling');
+            box.classList.add('is-scrolling'); // Trigger upward animation
         }
     });
 });
@@ -21,8 +21,8 @@ document.addEventListener('scroll', () => {
         const trackPosition = track.getBoundingClientRect().top;
 
         if (trackPosition < windowHeight - 100) {
-            track.style.opacity = '1';
-            track.style.transform = 'translateX(0)';
+            track.style.opacity = '1'; /* Reveal tracks */
+            track.style.transform = 'translateY(0)'; /* Reset downward offset */
         }
     });
 });

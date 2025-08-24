@@ -1,33 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaxy Spiral Experiment</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden; /* Removes scrollbars */
-            background-color: black; /* Background for galaxy spiral */
-        }
-    </style>
-</head>
-<body>
-    <!-- Include Three.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
 
 // Create a Three.js Scene and Renderer
 const scene = new THREE.Scene();

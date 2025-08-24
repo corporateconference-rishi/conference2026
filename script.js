@@ -11,11 +11,10 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // Create Galaxy Globe Geometry
-const sphereGeometry = new THREE.SphereBufferGeometry(10, 64, 64); // Radius increased to 10, higher detail: 64x64
+const sphereGeometry = new THREE.SphereBufferGeometry(20, 128, 128); // Radius increased significantly: 20, higher detail: 128x128
 const galaxyMaterial = new THREE.PointsMaterial({
-    size: 0.15, // Larger size for each dot
-    color: new THREE.Color(0xffffff), // White glow (can randomize for galaxy-like color)
-    vertexColors: true, // Enable individual dot colors
+    size: 0.15,
+    vertexColors: true, // Enable individual galaxy gradient colors
 });
 
 const particles = [];
@@ -28,7 +27,7 @@ for (let i = 0; i < sphereGeometry.attributes.position.count; i++) {
         sphereGeometry.attributes.position.array[i * 3 + 2]  // Z
     );
 
-    // Add galaxy-like colors: randomized pinks/blues
+    // Add galaxy-like colors: randomized RGB values (e.g., purples, blues, whites)
     colors.push(
         Math.random(), // Red
         Math.random() * 0.5, // Green
@@ -36,7 +35,7 @@ for (let i = 0; i < sphereGeometry.attributes.position.count; i++) {
     );
 }
 
-// Set attributes for the geometry (positions and colors)
+// Set attributes for the geometry
 const particleGeometry = new THREE.BufferGeometry();
 particleGeometry.setAttribute(
     "position",
@@ -47,19 +46,23 @@ particleGeometry.setAttribute(
     new THREE.Float32BufferAttribute(colors, 3)
 );
 
-// Create Points for the Sphere (Galaxy Effect)
+// Create Points
 const galaxyGlobe = new THREE.Points(particleGeometry, galaxyMaterial);
 scene.add(galaxyGlobe);
 
-// Position Camera
-camera.position.z = 25; // Adjust camera for larger globe
+// Adjust Camera Position for Full-Viewport Fit
+camera.position.z = 40; // Move back and scale globe into view
 
-// Animation Loop (Globe Rotation)
+// Animation Loop
 function animate() {
     requestAnimationFrame(animate);
-    galaxyGlobe.rotation.y += 0.005; // Gentle spinning motion on Y-axis
+
+    // Spin horizontally
+    galaxyGlobe.rotation.y += 0.005;
+
     renderer.render(scene, camera);
 }
+
 animate();
 
 // Responsive Canvas

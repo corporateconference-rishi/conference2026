@@ -2,8 +2,8 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    scroll-behavior: smooth; /* Enable smooth scrolling globally */
-    background-color: black; /* Black background for the website */
+    scroll-behavior: smooth;
+    background-color: black;
 }
 
 /* Top Menu Bar */
@@ -11,45 +11,39 @@ body {
     position: fixed;
     width: 100%;
     top: 0;
-    height: 50px; /* Slimmer bar */
-    padding: 0 20px; /* Reduced padding */
-    display: flex; /* Flex layout for alignment */
-    justify-content: space-between; /* Space out logo and button */
-    background: rgba(0, 0, 0, 0.7); /* Slightly darker translucent bar */
-    z-index: 10; /* Keep above other elements */
-    align-items: center; /* Vertically center content */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 10;
 }
 
 .logo {
-    font-size: 1.5rem; /* Slightly smaller logo text */
+    font-size: 1.8rem;
     font-weight: bold;
     color: white;
 }
 
 .register-button-top {
-    padding: 6px 20px; /* Smaller button size */
+    padding: 10px 25px;
     background-color: transparent;
     border: 2px solid white;
     color: white;
-    font-size: 1rem; /* Slightly smaller font size */
-    border-radius: 8px; /* Smooth rounded corners */
+    font-size: 1.2rem;
+    border-radius: 5px;
     text-decoration: none;
-    margin-left: auto; /* Push slightly closer to the middle */
-    margin-right: 35px; /* Shift left relative to the edge */
     transition: all 0.3s ease-in-out;
 }
 
 .register-button-top:hover {
-    background-color: white; /* White fill on hover */
-    color: black; /* Black text on hover */
-    transform: scale(1.05); /* Slight scaling effect on hover */
-    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.4); /* Subtle shadow effect */
+    background-color: white;
+    color: black;
 }
 
 /* Hero Section */
 #hero {
-    height: 100vh; /* Full viewport height */
-    background-image: url('./assets/banner.png'); /* Hero section background */
+    height: 100vh;
+    background-image: url('./assets/banner.png');
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -58,16 +52,15 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative; /* Required for beam-light overlay */
 }
 
 .conference-title {
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: bold;
 }
 
 .subtitle {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-top: 10px;
 }
 
@@ -78,7 +71,7 @@ body {
     border: 2px solid white;
     background-color: transparent;
     color: white;
-    border-radius: 5px; /* Rounded button corners */
+    border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease-in-out;
 }
@@ -88,36 +81,15 @@ body {
     color: white;
 }
 
-/* Beam Light Effect */
-.beam-light {
-    position: absolute; /* Overlay hero section */
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.8), rgba(255, 215, 0, 0)); /* Yellow gold gradient */
-    border-radius: 50%; /* Circular light */
-    animation: pulseLight 2.5s infinite; /* Pulsating effect */
-    top: 30%;
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%);
-    z-index: -1; /* Stay behind hero content */
-}
-
-@keyframes pulseLight {
-    0% {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-}
-
 /* Objectives Section */
+#objectives {
+    height: 200vh; /* Extended height for scrolling */
+    padding: 50px 20px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
 .section-header {
     font-size: 3.5rem;
     font-weight: bold;
@@ -127,10 +99,11 @@ body {
     color: white;
 }
 
-/* Layer 1 */
+/* Layer 1: Static Boxes */
 .layer-1 {
     display: flex;
-    justify-content: space-around; /* Spread horizontally */
+    justify-content: center; /* Center horizontally */
+    gap: 30px; /* Space between boxes */
     margin-bottom: 50px;
 }
 
@@ -138,15 +111,27 @@ body {
     width: 300px;
     height: 150px;
     background-color: #2E2E2E;
-    border-radius: 15px;
     text-align: center;
+    border-radius: 15px;
     margin: 20px;
     font-size: 1.2rem;
     color: white;
 }
 
-/* Layer 2 */
+/* Layer 2: Dynamic Boxes */
+.layer-2 {
+    display: flex;
+    justify-content: center; /* Center Layer 2 over Layer 1 */
+    gap: 150px; /* Space between D and E */
+    margin-top: 75px;
+}
+
 .dynamic-box {
-    transform: translateY(0); /* Add scrolling */
-    transition: transform 0.3s ease-in-out;
+    width: 300px;
+    height: 160px;
+    background-color: #3A3A3A;
+    border-radius: 15px;
+    text-align: center;
+    transform: translateY(0); /* Initial upright position */
+    transition: transform 0.2s linear; /* Smooth movement effect */
 }

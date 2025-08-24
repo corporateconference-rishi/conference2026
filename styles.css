@@ -176,3 +176,40 @@ body {
     box-shadow: 0px 0px 20px rgba(255, 255, 255, 1); /* Intensify glow on hover */
     transform: scale(1.1); /* Slightly larger on hover */
 }
+
+/* Hero Section with Plain Black Background */
+#hero {
+    height: 100vh; /* Full viewport height */
+    background-color: black; /* Plain black background */
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Required for spiral animation overlay */
+}
+
+/* Spiral Animation */
+.spiral {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0), rgba(255, 0, 255, 0.3)); /* Gentle purple spiral gradient */
+    border-radius: 50%;
+    animation: rotateSpiral 10s linear infinite; /* Slow, smooth rotation */
+    z-index: -1; /* Stays behind Hero content */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center spiral */
+}
+
+/* Keyframes for Rotation */
+@keyframes rotateSpiral {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg); /* Start */
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg); /* Full loop */
+    }
+}

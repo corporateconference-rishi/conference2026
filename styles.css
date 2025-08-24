@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     scroll-behavior: smooth;
-    background-color: black; /* Plain black background */
+    background-color: black; /* Default black background */
 }
 
 /* Top Menu Bar */
@@ -16,7 +16,7 @@ body {
     display: flex;
     justify-content: space-between; /* Space out logo and button */
     background: rgba(0, 0, 0, 0.8); /* Slightly darker translucent bar */
-    z-index: 10; /* Maintain above all sections */
+    z-index: 10; /* Ensure it remains above all sections */
     align-items: center;
 }
 
@@ -36,7 +36,7 @@ body {
     border-radius: 8px; /* Rounded corners */
     background-color: black;
     color: white;
-    font-size: 0.9rem; /* Sleeker font size */
+    font-size: 0.9rem; /* Sleek font size */
     text-decoration: none;
     box-shadow: none;
     transition: all 0.3s ease; /* Smooth transition for hover effects */
@@ -49,66 +49,70 @@ body {
     box-shadow: 0px 0px 20px rgba(255, 255, 255, 1); /* Glowing effect */
     transform: scale(1.05); /* Slight size increase */
 }
-}
-
-/* Glowing Effect on Hover */
-.register-button-top:hover {
-    background-color: white; /* Change background to white */
-    color: black; /* Change text color to black */
-    box-shadow: 0px 0px 20px rgba(255, 255, 255, 1); /* Intense white glow */
-    transform: scale(1.05); /* Slight scaling effect */
-}
 
 /* Hero Section */
 #hero {
     height: 100vh;
-    background-color: black; /* Banner removed, plain black background */
+    position: relative; /* Ensure proper placement of canvas and content */
+    background-color: transparent; /* Spiral animation will be behind */
+    overflow: hidden; /* Prevent content overflow */
+}
+
+.hero-content {
+    position: relative; /* Content stays above spiral */
+    z-index: 10; /* Ensure content is above the canvas */
     text-align: center;
     color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .conference-title {
-    font-size: 5rem;
+    font-size: 5rem; /* Large title */
     font-weight: bold;
 }
 
 .subtitle {
-    font-size: 2rem;
+    font-size: 2rem; /* Subtitle size */
     margin-top: 10px;
 }
 
 .learn-more-btn {
     margin-top: 20px;
-    padding: 12px 30px;
-    font-size: 1.2rem;
+    padding: 12px 30px; /* Button padding */
+    font-size: 1.2rem; /* Button font size */
     border: 2px solid white;
     background-color: transparent;
     color: white;
-    border-radius: 5px;
+    border-radius: 5px; /* Rounded button corners */
     text-decoration: none;
     transition: background-color 0.3s ease-in-out;
 }
 
 .learn-more-btn:hover {
-    background: linear-gradient(to right, #ff0055, #36007d);
+    background: linear-gradient(to right, #ff0055, #36007d); /* Stylish button gradient */
     color: white;
+}
+
+/* Canvas Background Style */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure canvas stays behind Hero content */
 }
 
 /* Objectives Section */
 #objectives {
-    height: 200vh; /* Extended height for scrolling */
-    padding: 50px 20px;
-    background-color: black; /* Same as hero section */
+    height: 200vh; /* Extended height to enable smooth scrolling */
+    padding: 50px 20px; /* Section padding */
+    background-color: black; /* Consistent black background */
     color: white;
     text-align: center;
 }
 
 .section-header {
-    font-size: 3.5rem;
+    font-size: 3.5rem; /* Large header for Objectives section */
     font-weight: bold;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -116,7 +120,7 @@ body {
     color: white;
 }
 
-/* Layer 1: Static Boxes */
+/* Layer 1: Static Boxes Styling */
 .layer-1 {
     display: flex;
     justify-content: center; /* Center horizontally */
@@ -125,31 +129,36 @@ body {
 }
 
 .objective-box {
-    width: 300px;
-    height: 150px;
-    background-color: #2E2E2E;
+    width: 300px; /* Box width */
+    height: 150px; /* Box height */
+    background-color: #2E2E2E; /* Dark gray box color */
     text-align: center;
-    border-radius: 15px;
+    border-radius: 15px; /* Rounded corners */
     margin: 20px;
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Text size inside the boxes */
     color: white;
 }
 
-/* Layer 2: Dynamic Boxes */
+/* Layer 2: Dynamic Boxes Styling */
 .layer-2 {
     display: flex;
     justify-content: center; /* Center Layer 2 over Layer 1 */
-    gap: 150px; /* Space between D and E */
+    gap: 150px; /* Space between Boxes D and E */
     margin-top: 75px;
 }
 
 .dynamic-box {
     width: 300px;
-    height: 160px;
-    background-color: #3A3A3A;
-    border-radius: 15px;
+    height: 160px; /* Larger box height for dynamic boxes */
+    background-color: #3A3A3A; /* Slightly lighter gray for dynamic boxes */
+    border-radius: 15px; /* Rounded corners */
     text-align: center;
     transform: translateY(0); /* Initial upright position */
-    transition: transform 0.2s linear; /* Smooth movement effect */
+    transition: transform 0.2s linear; /* Smooth scrolling effect */
 }
 
+/* Glowing Effect on Button Hover (Optional) */
+.learn-more-btn:hover {
+    background: linear-gradient(to right, #ff0055, #36007d);
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5); /* Glowing button shadow */
+}

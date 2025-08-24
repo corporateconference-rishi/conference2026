@@ -11,10 +11,10 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // Create Galaxy Globe Geometry
-const sphereGeometry = new THREE.SphereBufferGeometry(5, 32, 32); // Sphere radius: 5, detail level: 32x32
+const sphereGeometry = new THREE.SphereBufferGeometry(10, 64, 64); // Radius increased to 10, higher detail: 64x64
 const galaxyMaterial = new THREE.PointsMaterial({
-    size: 0.1, // Size of each dot
-    color: new THREE.Color(0xffffff), // White glow (can randomize later)
+    size: 0.15, // Larger size for each dot
+    color: new THREE.Color(0xffffff), // White glow (can randomize for galaxy-like color)
     vertexColors: true, // Enable individual dot colors
 });
 
@@ -32,7 +32,7 @@ for (let i = 0; i < sphereGeometry.attributes.position.count; i++) {
     colors.push(
         Math.random(), // Red
         Math.random() * 0.5, // Green
-        Math.random() * 1.0 // Blue
+        Math.random() // Blue
     );
 }
 
@@ -52,7 +52,7 @@ const galaxyGlobe = new THREE.Points(particleGeometry, galaxyMaterial);
 scene.add(galaxyGlobe);
 
 // Position Camera
-camera.position.z = 15;
+camera.position.z = 25; // Adjust camera for larger globe
 
 // Animation Loop (Globe Rotation)
 function animate() {

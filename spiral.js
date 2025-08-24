@@ -1,70 +1,44 @@
-/* Galaxy Spiral Animation Logic for Hero Section */
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("Spiral animation logic starting...");
+
     const heroSection = document.querySelector('#hero');
     if (!heroSection) {
         console.error("Hero section not found!");
         return;
     }
 
+    // Create a Canvas for Rendering
     const canvas = document.createElement('canvas');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     canvas.style.position = 'absolute';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.zIndex = '-1'; // Ensure canvas is background
+    canvas.style.zIndex = '-1'; // Push canvas behind Hero content
     heroSection.appendChild(canvas);
 
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
-
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    // Three.js Renderer
+    const renderer = new THREE.WebGLRenderer({ canvas });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
+    // Three.js Scene
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x000000);
+    scene.background = new THREE.Color(0x000000); // Black background
 
+    // Three.js Camera
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 40;
+    camera.position.z = 10;
 
-    const spiralGeometry = new THREE.BufferGeometry();
-    const spiralVertices = [];
-    const numPoints = 600;
-    const radius = 5;
+    // Test Cube (Red Box for Debugging)
+    const testCube = new THREE.Mesh(
+        new THREE.BoxGeometry(2, 2, 2),
+        new THREE.MeshBasicMaterial({ color: 0xff0000 }) // Red Cube
+    );
+    scene.add(testCube);
 
-    for (let i = 0; i < numPoints; i++) {
-        const angle = i * 0.1;
-        const z = i * 0.05;
-        spiralVertices.push(
-            Math.cos(angle) * radius,
-            Math.sin(angle) * radius,
-            z
-        );
-    }
-
-    const colors = new Float32Array(numPoints * 3);
-    for (let i = 0; i < numPoints; i++) {
-        colors[i * 3] = Math.random();
-        colors[i * 3 + 1] = Math.random() * 0.5;
-        colors[i * 3 + 2] = 1;
-    }
-
-    spiralGeometry.setAttribute('position', new THREE.Float32BufferAttribute(spiralVertices, 3));
-    spiralGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-
-    const spiralMaterial = new THREE.PointsMaterial({
-        size: 0.5, // Adjust size for visibility
-        vertexColors: true,
-    });
-
-    const spiral = new THREE.Points(spiralGeometry, spiralMaterial);
-    scene.add(spiral);
-
+    // Animation Loop
     function animate() {
         requestAnimationFrame(animate);
-        spiral.rotation.z += 0.01;
+        testCube.rotation.x += 0.01;
+        testCube.rotation.y += 0.01;
         renderer.render(scene, camera);
     }
 

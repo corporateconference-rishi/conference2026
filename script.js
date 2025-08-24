@@ -1,4 +1,4 @@
-// Create Scene and Renderer
+// Create Scene and Renderers for Globe and Spiral
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
     75,
@@ -11,63 +11,88 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // Create Galaxy Globe Geometry
-const sphereGeometry = new THREE.SphereBufferGeometry(20, 128, 128); // Radius increased significantly: 20, higher detail: 128x128
-const galaxyMaterial = new THREE.PointsMaterial({
-    size: 0.15,
-    vertexColors: true, // Enable individual galaxy gradient colors
+const globeGeometry = new THREE.SphereBufferGeometry(5, 32, 32);
+const globeMaterial = new THREE.PointsMaterial({
+    size: 0.1,
+    vertexColors: true,
 });
+const globe = new THREE.Points(globeGeometry, globeMaterial);
+scene.add(globe);
+camera.position.z = 15;
 
-const particles = [];
-const colors = [];
-
-for (let i = 0; i < sphereGeometry.attributes.position.count; i++) {
-    particles.push(
-        sphereGeometry.attributes.position.array[i * 3],    // X
-        sphereGeometry.attributes.position.array[i * 3 + 1], // Y
-        sphereGeometry.attributes.position.array[i * 3 + 2]  // Z
-    );
-
-    // Add galaxy-like colors: randomized RGB values (e.g., purples, blues, whites)
-    colors.push(
-        Math.random(), // Red
-        Math.random() * 0.5, // Green
-        Math.random() // Blue
-    );
+// Animate Globe (3 loops)
+let globeFrameCount = 0;
+function animateGlobe() {
+    if (globeFrameCount < 600) { // Approx. 3 loops (~600 frames)
+        requestAnimationFrame(animateGlobe);
+        globe.rotation.y += 0.01; // Spin
+        renderer.render(scene, camera);
+    } else {
+        shrinkGlobe(); // Begin shrinking the globe
+    }
+    globeFrameCount++;
 }
 
-// Set attributes for the geometry
-const particleGeometry = new THREE.BufferGeometry();
-particleGeometry.setAttribute(
-    "position",
-    new THREE.Float32BufferAttribute(particles, 3)
-);
-particleGeometry.setAttribute(
-    "color",
-    new THREE.Float32BufferAttribute(colors, 3)
-);
-
-// Create Points
-const galaxyGlobe = new THREE.Points(particleGeometry, galaxyMaterial);
-scene.add(galaxyGlobe);
-
-// Adjust Camera Position for Full-Viewport Fit
-camera.position.z = 40; // Move back and scale globe into view
-
-// Animation Loop
-function animate() {
-    requestAnimationFrame(animate);
-
-    // Spin horizontally
-    galaxyGlobe.rotation.y += 0.005;
-
-    renderer.render(scene, camera);
+// Shrink Globe and Transition to Spiral
+function shrinkGlobe() {
+    const shrinkInterval = setInterval(() => {
+        if (globe.scale.x > 0) {
+            globe.scale.x -= 0.01;
+            globe.scale.y -= 0.01;
+            globe.scale.z -= 0.01;
+        } else {
+            clearInterval(shrinkInterval);
+            scene.remove(globe); // Remove globe completely
+            showSpiral(); // Transition to spiral
+        }
+        renderer.render(scene, camera);
+    }, 16);
 }
 
-animate();
+// Spiral Animation
+function showSpiral() {
+    const spiralGeometry = new THREE.BufferGeometry();
+    const spiralVertices = [];
+    const numPoints = 600;
+    const radius = 5;
 
-// Responsive Canvas
-window.addEventListener("resize", () => {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-});
+    for (let i = 0; i < numPoints; i++) {
+        const angle = i * 0.1;
+        const z = i * 0.05;
+        spiralVertices.push(
+            Math.cos(angle) * radius,
+            Math.sin(angle) * radius,
+            z
+        );
+    }
+
+    spiralGeometry.setAttribute(
+        "position",
+        new THREE.Float32BufferAttribute(spiralVertices, 3)
+    );
+    const spiralMaterial = new THREE.PointsMaterial({ size: 0.1, color: 0xff00ff });
+    const spiral = new THREE.Points(spiralGeometry, spiralMaterial);
+
+    scene.add(spiral);
+    camera.position.z = 30;
+
+    function animateSpiral() {
+        requestAnimationFrame(animateSpiral);
+        spiral.rotation.z += 0.005; // Infinite spin
+        renderer.render(scene, camera);
+    }
+    animateSpiral();
+
+    // Transition to Hero Section after Spiral Appears
+    setTimeout(() => showHeroSection(), 3000);
+}
+
+// Hero Section Animation
+function showHeroSection() {
+    document.getElementById("hero-section").style.display = "block";
+    const conferenceTitle = document.querySelector(".conference-title");
+    conferenceTitle.style.opacity = 1; // Fade-in effect
+}
+
+// Run Initial Animation
+animateGlobe();

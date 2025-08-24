@@ -1,4 +1,4 @@
-// Create Scene and Renderer
+// Create a Three.js Scene and Renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
     75, // Field of view
@@ -13,15 +13,12 @@ document.body.appendChild(renderer.domElement);
 // Create Spiral Geometry
 const spiralGeometry = new THREE.BufferGeometry();
 const spiralVertices = [];
-const spiralColor = new THREE.Color(0xff00ff); // Galaxy pink-purple color
-
-let numLoops = 4; // Total loops in spiral
-let numPoints = 200; // Points for smoothness
-const radius = 5; // Radius of the spiral
+const numPoints = 600; // Increase for smoothness and unlimited loops
+const radius = 5; // Spiral radius
 
 for (let i = 0; i < numPoints; i++) {
-    const angle = (i / numPoints) * Math.PI * 2 * numLoops; // Angle for each point
-    const z = i * 0.05; // Adjust spiral rise
+    const angle = i * 0.1; // Spiral angle (dynamic for unlimited loops)
+    const z = i * 0.05; // Spiral depth
     spiralVertices.push(
         Math.cos(angle) * radius, // X-coordinate
         Math.sin(angle) * radius, // Y-coordinate
@@ -29,14 +26,23 @@ for (let i = 0; i < numPoints; i++) {
     );
 }
 
-// Add spiral geometry
+// Create Dynamic Galaxy Colors
+const colors = new Float32Array(numPoints * 3);
+for (let i = 0; i < numPoints; i++) {
+    colors[i * 3] = Math.random(); // Red
+    colors[i * 3 + 1] = Math.random() * 0.5; // Green
+    colors[i * 3 + 2] = 1; // Blue
+}
+spiralGeometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+
+// Add Spiral Geometry to Scene
 spiralGeometry.setAttribute(
     "position",
     new THREE.Float32BufferAttribute(spiralVertices, 3)
 );
 const spiralMaterial = new THREE.PointsMaterial({
-    size: 0.1, // Star size
-    color: spiralColor, // Points color
+    size: 0.1, // Star point size
+    vertexColors: true, // Enable galaxy-like colors
 });
 const spiral = new THREE.Points(spiralGeometry, spiralMaterial);
 scene.add(spiral);
@@ -44,11 +50,11 @@ scene.add(spiral);
 // Set Camera Position
 camera.position.z = 30;
 
-// Animation Loop
+// Animate the Spiral Galaxy
 function animate() {
-    requestAnimationFrame(animate);
-    spiral.rotation.z += 0.01; // Rotate the spiral gently
-    renderer.render(scene, camera);
+    requestAnimationFrame(animate); // Keep animating
+    spiral.rotation.z += 0.005; // Slow rotation
+    renderer.render(scene, camera); // Render the scene
 }
 animate();
 

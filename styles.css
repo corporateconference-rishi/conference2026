@@ -28,16 +28,18 @@ body {
 
 /* Register Button (moved to the right) */
 .register-button-top {
-    margin-left: auto; /* Push Register button to the far right */
+    margin-left: auto; /* Push Register button to the far right by default */
+    margin-right: 30px; /* Adjust spacing slightly from right edge */
     padding: 6px 20px; /* Compact size */
-    border: 2px solid white; /* White border for visibility */
+    border: 2px solid white;
     border-radius: 8px; /* Rounded corners */
     background-color: black; /* Default black background */
     color: white; /* Default white text */
     font-size: 0.9rem; /* Sleeker font size */
-    text-decoration: none; /* Remove underline or additional text formatting */
-    box-shadow: none; /* No glow by default */
+    text-decoration: none;
+    box-shadow: none; /* No glow effect by default */
     transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
 }
 
 /* Glowing Effect on Hover */

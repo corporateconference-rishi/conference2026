@@ -300,3 +300,13 @@ canvas {
     height: 100%; /* Ensure it spans the full height */
     z-index: -1; /* Push canvas behind Hero content */
 }
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Push canvas behind Hero content */
+    background: transparent;
+}

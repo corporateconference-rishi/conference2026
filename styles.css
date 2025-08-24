@@ -55,10 +55,8 @@ body {
 }
 
 .conference-title {
-    font-size: 3rem; /* Reduced size */
+    font-size: 5rem;
     font-weight: bold;
-    margin-bottom: 10px; /* Add a slight gap below the title */
-
 }
 
 .subtitle {
@@ -136,43 +134,4 @@ body {
     text-align: center;
     transform: translateY(0); /* Initial upright position */
     transition: transform 0.2s linear; /* Smooth movement effect */
-}
-
-/* Sleeker Menu Bar */
-.top-menu {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    height: 40px; /* Reduced to make sleeker */
-    padding: 0 20px; /* Slimmer spacing */
-    display: flex;
-    justify-content: space-between; /* Space out logo and button */
-    background: rgba(0, 0, 0, 0.8); /* Slightly darker translucent bar */
-    z-index: 10; /* Maintain above all sections */
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.5rem; /* Slightly compact */
-    font-weight: bold;
-    color: white;
-}
-
-/* Register Button with Glowing Effect */
-.register-button-top {
-    padding: 8px 20px; /* Slightly smaller button dimensions */
-    background-color: white; /* White background to reflect glow */
-    border: 2px solid white;
-    color: black; /* Contrasting black text */
-    font-size: 1rem; /* Compact text size */
-    border-radius: 10px; /* Rounded corners */
-    text-decoration: none;
-    margin-right: 30px;
-    box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.8); /* Glow effect */
-    transition: all 0.3s ease-in-out;
-}
-
-.register-button-top:hover {
-    box-shadow: 0px 0px 20px rgba(255, 255, 255, 1); /* Intensify glow on hover */
-    transform: scale(1.1); /* Slightly larger on hover */
 }

@@ -29,7 +29,7 @@ body {
 /* Register Button (moved to the right) */
 .register-button-top {
     margin-left: auto; /* Push Register button to the far right by default */
-    margin-right: 30px; /* Adjust spacing slightly from right edge */
+    margin-right: 45px; /* Reduce spacing from the right edge for a closer alignment */
     padding: 6px 20px; /* Compact size */
     border: 2px solid white;
     border-radius: 8px; /* Rounded corners */
@@ -39,7 +39,6 @@ body {
     text-decoration: none;
     box-shadow: none; /* No glow effect by default */
     transition: all 0.3s ease; /* Smooth transition for hover effect */
-}
 }
 
 /* Glowing Effect on Hover */

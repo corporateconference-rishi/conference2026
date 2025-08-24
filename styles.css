@@ -162,3 +162,131 @@ canvas {
     height: 100%;
     z-index: -1; /* Push canvas behind Hero content */
 }
+
+
+/* Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Top Menu Bar */
+.top-menu {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 35px; /* Reduced height for sleeker design */
+    padding: 0 15px; /* Slimmer padding */
+    display: flex;
+    justify-content: space-between; /* Space out logo and button */
+    background: rgba(0, 0, 0, 0.8); /* Slightly darker translucent bar */
+    z-index: 10; /* Maintain above all sections */
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem; /* Sleeker logo */
+    font-weight: bold;
+    color: white;
+}
+
+.register-button-top {
+    position: absolute; /* Explicit positioning */
+    right: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px 20px;
+    border: 2px solid white;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+    font-size: 0.9rem;
+    text-decoration: none;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.register-button-top:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+}
+
+/* Hero Section */
+#hero {
+    position: relative;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Spiral Background Canvas */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ensure it spans the full width */
+    height: 100%; /* Ensure it spans the full height */
+    z-index: -1; /* Push canvas behind Hero content */
+}
+
+/* Objectives Section */
+#objectives {
+    height: 200vh;
+    padding: 50px 20px;
+    background-color: black; /* Unaffected Objective section */
+    color: white;
+    text-align: center;
+}
+
+.section-header {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: white;
+}
+
+/* Layer 1: Static Boxes */
+.layer-1 {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.objective-box {
+    width: 300px;
+    height: 150px;
+    background-color: #2E2E2E;
+    text-align: center;
+    border-radius: 15px;
+    margin: 20px;
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Layer 2: Dynamic Boxes */
+.layer-2 {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    margin-top: 75px;
+}
+
+.dynamic-box {
+    width: 300px;
+    height: 160px;
+    background-color: #3A3A3A;
+    border-radius: 15px;
+    text-align: center;
+    transform: translateY(0);
+    transition: transform 0.2s linear;
+}

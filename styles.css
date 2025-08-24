@@ -290,3 +290,13 @@ canvas {
     transform: translateY(0);
     transition: transform 0.2s linear;
 }
+
+/* Spiral Background Canvas */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ensure it spans the full width */
+    height: 100%; /* Ensure it spans the full height */
+    z-index: -1; /* Push canvas behind Hero content */
+}

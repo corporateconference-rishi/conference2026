@@ -26,19 +26,29 @@ body {
     color: white;
 }
 
-/* Register Button (moved to the right) */
 .register-button-top {
-    margin-left: auto; /* Push Register button to the far right by default */
-    margin-right: 45px; /* Reduce spacing from the right edge for a closer alignment */
+    position: absolute; /* Explicit positioning */
+    right: 100px; /* Move the Register button 100px from the right edge */
+    top: 50%; /* Vertically centered */
+    transform: translateY(-50%); /* Correct vertical alignment */
     padding: 6px 20px; /* Compact size */
     border: 2px solid white;
     border-radius: 8px; /* Rounded corners */
-    background-color: black; /* Default black background */
-    color: white; /* Default white text */
+    background-color: black;
+    color: white;
     font-size: 0.9rem; /* Sleeker font size */
     text-decoration: none;
-    box-shadow: none; /* No glow effect by default */
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
+    box-shadow: none;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Glowing Effect on Hover */
+.register-button-top:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 1); /* Glowing effect */
+    transform: scale(1.05); /* Slight size increase */
+}
 }
 
 /* Glowing Effect on Hover */

@@ -7,22 +7,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Section 1: Galaxy Globe -->
-    <section id="galaxy-globe-section">
-        <div id="galaxy-globe"></div>
-    </section>
+    <!-- Top Menu Bar -->
+    <header class="top-menu">
+        <div class="logo">AgNite 26</div>
+        <a href="#" class="register-button-top">Register</a>
+    </header>
 
-    <!-- Section 2: Galaxy Spiral -->
-    <section id="galaxy-spiral-section" style="display: none;">
-        <div id="galaxy-spiral"></div>
-    </section>
-
-    <!-- Section 3: Hero Section -->
-    <section id="hero-section" style="display: none;">
-        <header class="top-menu">
-            <div class="logo">AgNite 26</div>
-            <a href="#" class="register-button-top">Register</a>
-        </header>
+    <!-- Hero Section -->
+    <section id="hero">
         <div class="hero-content">
             <h1 class="conference-title">AgNite 2026 Conference</h1>
             <p class="subtitle">Forefront of Innovation, Commerce, and Artificial Intelligence</p>
@@ -30,9 +22,12 @@
         </div>
     </section>
 
-    <!-- Section 4: Objectives Section -->
-    <section id="objectives-section">
+    <!-- Objectives Section -->
+    <section id="objectives">
+        <!-- Section Header -->
         <h2 class="section-header">Objectives of the Conference</h2>
+
+        <!-- Layer 1: Static Boxes -->
         <div class="layer layer-1">
             <div class="objective-box" id="box-a">
                 <h3>A: Collaborative Research</h3>
@@ -47,6 +42,8 @@
                 <p>Leveraging AI for sustainable development.</p>
             </div>
         </div>
+
+        <!-- Layer 2: Dynamic Boxes -->
         <div class="layer layer-2">
             <div class="objective-box dynamic-box" id="box-d">
                 <h3>D: Industry Partnerships</h3>
@@ -59,8 +56,6 @@
         </div>
     </section>
 
-    <!-- Include Three.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

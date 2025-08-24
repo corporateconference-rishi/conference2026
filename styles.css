@@ -2,140 +2,57 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    scroll-behavior: smooth;
-    background-color: black;
+    scroll-behavior: smooth; /* Smooth scrolling for Objectives section */
+    background-color: black; /* Plain black background */
 }
 
-/* Top Menu Bar */
-.top-menu {
-    position: fixed;
+/* Section Styling */
+section {
     width: 100%;
-    top: 0;
-    padding: 15px 20px;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Galaxy Globe Section */
+#galaxy-globe-section {
     display: flex;
-    justify-content: space-between;
-    background: rgba(0, 0, 0, 0.65);
-    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    background-color: black; /* Plain black */
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white;
-}
-
-.register-button-top {
-    padding: 10px 25px;
-    background-color: transparent;
-    border: 2px solid white;
-    color: white;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-}
-
-.register-button-top:hover {
-    background-color: white;
-    color: black;
+/* Galaxy Spiral Section */
+#galaxy-spiral-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black; /* Plain black */
 }
 
 /* Hero Section */
-#hero {
-    height: 100vh;
-    background-image: url('./assets/banner.png');
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    color: white;
+#hero-section {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    background-color: black; /* No banner, plain black background */
 }
 
 .conference-title {
-    font-size: 3rem; /* Reduced size */
-    font-weight: bold;
-    margin-bottom: 10px; /* Add a slight gap below the title */
-
+    font-size: 4rem;
+    opacity: 0; /* Hidden initially */
+    transition: all 0.5s ease-in-out; /* Smooth fade-in effect */
 }
 
-.subtitle {
-    font-size: 2rem;
-    margin-top: 10px;
-}
-
-.learn-more-btn {
-    margin-top: 20px;
-    padding: 12px 30px;
-    font-size: 1.2rem;
-    border: 2px solid white;
-    background-color: transparent;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.learn-more-btn:hover {
-    background: linear-gradient(to right, #ff0055, #36007d);
-    color: white;
+/* Expand Effect on Hover */
+.conference-title:hover {
+    transform: scale(1.05); /* Slight scaling effect */
 }
 
 /* Objectives Section */
-#objectives {
-    height: 200vh; /* Extended height for scrolling */
-    padding: 50px 20px;
-    background-color: black;
-    color: white;
+#objectives-section {
+    padding: 50px;
     text-align: center;
-}
-
-.section-header {
-    font-size: 3.5rem;
-    font-weight: bold;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    text-align: center;
-    color: white;
-}
-
-/* Layer 1: Static Boxes */
-.layer-1 {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    gap: 30px; /* Space between boxes */
-    margin-bottom: 50px;
-}
-
-.objective-box {
-    width: 300px;
-    height: 150px;
-    background-color: #2E2E2E;
-    text-align: center;
-    border-radius: 15px;
-    margin: 20px;
-    font-size: 1.2rem;
-    color: white;
-}
-
-/* Layer 2: Dynamic Boxes */
-.layer-2 {
-    display: flex;
-    justify-content: center; /* Center Layer 2 over Layer 1 */
-    gap: 150px; /* Space between D and E */
-    margin-top: 75px;
-}
-
-.dynamic-box {
-    width: 300px;
-    height: 160px;
-    background-color: #3A3A3A;
-    border-radius: 15px;
-    text-align: center;
-    transform: translateY(0); /* Initial upright position */
-    transition: transform 0.2s linear; /* Smooth movement effect */
+    background-color: black; /* Background for Objectives */
 }
 
 /* Sleeker Menu Bar */
@@ -143,74 +60,34 @@ body {
     position: fixed;
     width: 100%;
     top: 0;
-    height: 40px; /* Reduced to make sleeker */
-    padding: 0 20px; /* Slimmer spacing */
+    height: 40px; /* Reduced height for sleek bar */
+    padding: 0 20px; /* Slim padding */
     display: flex;
-    justify-content: space-between; /* Space out logo and button */
+    justify-content: space-between;
     background: rgba(0, 0, 0, 0.8); /* Slightly darker translucent bar */
-    z-index: 10; /* Maintain above all sections */
+    z-index: 10;
     align-items: center;
 }
 
 .logo {
-    font-size: 1.5rem; /* Slightly compact */
+    font-size: 1.5rem; /* Compact logo */
     font-weight: bold;
     color: white;
 }
 
-/* Register Button with Glowing Effect */
+/* Register Button */
 .register-button-top {
-    padding: 8px 20px; /* Slightly smaller button dimensions */
-    background-color: white; /* White background to reflect glow */
+    padding: 8px 20px;
     border: 2px solid white;
-    color: black; /* Contrasting black text */
-    font-size: 1rem; /* Compact text size */
-    border-radius: 10px; /* Rounded corners */
-    text-decoration: none;
-    margin-right: 30px;
-    box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.8); /* Glow effect */
+    background-color: white;
+    color: black;
+    font-size: 1rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.8); /* Subtle glowing effect */
     transition: all 0.3s ease-in-out;
 }
 
 .register-button-top:hover {
-    box-shadow: 0px 0px 20px rgba(255, 255, 255, 1); /* Intensify glow on hover */
-    transform: scale(1.1); /* Slightly larger on hover */
-}
-
-/* Hero Section with Plain Black Background */
-#hero {
-    height: 100vh; /* Full viewport height */
-    background-color: black; /* Explicitly set plain black background */
-    background-image: none; /* Remove banner.png */
-    text-align: center;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative; /* Required for spiral animation overlay */
-}
-
-/* Spiral Animation */
-.spiral {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0), rgba(255, 0, 255, 0.3)); /* Gentle purple spiral gradient */
-    border-radius: 50%;
-    animation: rotateSpiral 10s linear infinite; /* Slow, smooth rotation */
-    z-index: -1; /* Stays behind Hero content */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Center spiral */
-}
-
-/* Keyframes for Rotation */
-@keyframes rotateSpiral {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg); /* Start */
-    }
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg); /* Full loop */
-    }
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
+    transform: scale(1.1);
 }

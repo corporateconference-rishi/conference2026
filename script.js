@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-/* Galaxy Spiral Animation for Hero Section */
+/* Galaxy Spiral Animation Logic for Hero Section */
 document.addEventListener('DOMContentLoaded', () => {
-    // Check if Hero section exists
-    const heroSection = document.querySelector('#hero');
-    if (!heroSection) return; // Exit if Hero section doesn't exist
+    // Check if Hero section exists and has spiral container
+    const spiralContainer = document.querySelector('#spiral-container');
+    if (!spiralContainer) return;
 
     // Create Three.js Scene and Renderer
     const scene = new THREE.Scene();
@@ -32,22 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
         0.1, // Near clipping
         1000 // Far clipping
     );
-
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-
-    // Append Renderer Canvas to Hero Section
-    heroSection.appendChild(renderer.domElement);
+    spiralContainer.appendChild(renderer.domElement); // Append canvas to spiral container
 
     // Create Spiral Geometry
     const spiralGeometry = new THREE.BufferGeometry();
     const spiralVertices = [];
-    const numPoints = 600; // Smooth spiral with more points
+    const numPoints = 600; // Smooth spiral definition
     const radius = 5; // Spiral radius
 
     for (let i = 0; i < numPoints; i++) {
-        const angle = i * 0.1; // Spiral angle
-        const z = i * 0.05; // Spiral depth for 3D effect
+        const angle = i * 0.1; // Angle for spiral
+        const z = i * 0.05; // Spiral depth (3D effect)
         spiralVertices.push(
             Math.cos(angle) * radius,
             Math.sin(angle) * radius,
@@ -55,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
-    // Create Dynamic Galaxy Colors (Random RGB values)
+    // Dynamic Colors for Spiral Points
     const colors = new Float32Array(numPoints * 3);
     for (let i = 0; i < numPoints; i++) {
         colors[i * 3] = Math.random(); // Red
@@ -72,28 +69,27 @@ document.addEventListener('DOMContentLoaded', () => {
         new THREE.Float32BufferAttribute(colors, 3)
     );
 
-    // Create Spiral Material
+    // Spiral Material
     const spiralMaterial = new THREE.PointsMaterial({
-        size: 0.1, // Size of each star-like point
-        vertexColors: true, // Enable per-point color
+        size: 0.1,
+        vertexColors: true,
     });
 
-    // Create Spiral Mesh
     const spiral = new THREE.Points(spiralGeometry, spiralMaterial);
     scene.add(spiral);
 
-    // Set Camera Position
+    // Camera Position
     camera.position.z = 30;
 
-    // Animate Spiral Galaxy
+    // Spiral Rotation Animation
     function animate() {
         requestAnimationFrame(animate);
-        spiral.rotation.z += 0.005; // Gentle rotation
+        spiral.rotation.z += 0.005;
         renderer.render(scene, camera);
     }
     animate();
 
-    // Make Canvas Responsive
+    // Responsive Canvas
     window.addEventListener('resize', () => {
         renderer.setSize(window.innerWidth, window.innerHeight);
         camera.aspect = window.innerWidth / window.innerHeight;

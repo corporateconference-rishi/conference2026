@@ -180,7 +180,8 @@ body {
 /* Hero Section with Plain Black Background */
 #hero {
     height: 100vh; /* Full viewport height */
-    background-color: black; /* Plain black background */
+    background-color: black; /* Explicitly set plain black background */
+    background-image: none; /* Remove banner.png */
     text-align: center;
     color: white;
     display: flex;

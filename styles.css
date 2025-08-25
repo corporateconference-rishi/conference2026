@@ -5,18 +5,18 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #000;
+  background: black;
   overflow: hidden;
 }
 
 /* Globe Animation */
 .globe-container {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  animation: rotateGlobe 1.5s linear infinite, fadeOut 3s forwards; /* Fade out after 3s */
-  background: linear-gradient(120deg, #00f, #0ff);
+  background: radial-gradient(circle, #00f, #0ff);
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.2);
+  animation: rotateGlobe 2s linear infinite, fadeOut 3s forwards; /* Fade out after 3s */
 }
 
 @keyframes rotateGlobe {
@@ -38,32 +38,42 @@ body {
   }
 }
 
-/* Spiral Animation */
+/* Spiral Galaxy Animation */
 .spiral-container {
-  width: 200px;
-  height: 200px;
+  width: 500px;
+  height: 500px;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.spiral {
-  width: 20px;
-  height: 20px;
-  border: 2px solid transparent;
-  border-left-color: #ff0;
-  border-top-color: #f0f;
-  border-radius: 50%;
+.star {
   position: absolute;
-  animation: spin 2s linear infinite;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  animation: moveInGalaxy 8s linear infinite;
 }
 
-@keyframes spin {
+/* Randomly distribute stars */
+.star:nth-child(1) {
+  top: 50%; left: 50%; transform-origin: 100px 100px; animation-delay: 0s;
+}
+.star:nth-child(2) {
+  top: 50%; left: 50%; transform-origin: 150px 150px; animation-delay: 0.2s;
+}
+.star:nth-child(3) {
+  top: 50%; left: 50%; transform-origin: 200px 200px; animation-delay: 0.4s;
+}
+.star:nth-child(4) {
+  top: 50%; left: 50%; transform-origin: 250px 250px; animation-delay: 0.6s;
+}
+
+/* Spiral Animation */
+@keyframes moveInGalaxy {
   0% {
-    transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) translateX(0);
   }
   100% {
-    transform: rotate(360deg) scale(1.5);
+    transform: rotate(360deg) translateX(100px);
   }
 }

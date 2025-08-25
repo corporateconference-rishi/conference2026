@@ -1,64 +1,65 @@
 // Configuration
-const numParticles = 1200; // Increase particle count for a denser spiral
-const spiralRadius = 40; // Radius of the spiral
-const spiralDepth = 0.2; // Depth of spiral
+const numParticles = 1500; // Higher particle count for denser spiral
+const spiralFactor = 5; // Controls spiral expansion rate
+const spiralDepth = 0.4; // Depth of particles along Z-axis
 
 // Create Scene, Camera, and Renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 100; // Position camera to view entire spiral
+camera.position.set(0, 0, 100); // Positioned to capture the spiral around the center
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Create Particle Geometry
+// Particles Geometry and Colors
 const particlesGeometry = new THREE.BufferGeometry();
 const particlePositions = [];
 const particleColors = [];
 
 for (let i = 0; i < numParticles; i++) {
-    const angle = i * 0.2; // Angle of rotation at the particle's position
-    const x = Math.cos(angle) * spiralRadius * (i / numParticles); // X position
-    const y = Math.sin(angle) * spiralRadius * (i / numParticles); // Y position
-    const z = i * spiralDepth; // Z position (depth)
+    const angle = i * 0.1; // Spiral angle
+    const radius = spiralFactor * angle; // Controls how far particles move outward
+    const x = Math.cos(angle) * radius; // X position (circular motion)
+    const y = Math.sin(angle) * radius; // Y position
+    const z = spiralDepth * i; // Z position (depth into spiral)
 
-    // Push coordinates into position array
+    // Push each particle's position into the array
     particlePositions.push(x, y, z);
 
-    // Random colors for the particles (galaxy stars)
+    // Create random colors for each particle
     const r = Math.random();
     const g = Math.random() * 0.5;
     const b = Math.random();
-    particleColors.push(r, g, b);
+    particleColors.push(r, g, b); // RGB values
 }
 
-// Create Attributes
+// Create Particle Attributes
 particlesGeometry.setAttribute("position", new THREE.Float32BufferAttribute(particlePositions, 3));
 particlesGeometry.setAttribute("color", new THREE.Float32BufferAttribute(particleColors, 3));
 
-// Particle Material
+// Material for Particles
 const particlesMaterial = new THREE.PointsMaterial({
-    size: 0.5, // Particle size
-    vertexColors: true, // Enable custom particle colors
+    size: 0.5, // Particle point size
+    vertexColors: true, // Enable galaxy-like colors for particles
 });
 
-// Add Particles to the Scene
-const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-scene.add(particles);
+// Add Particle System to Scene
+const spiralParticles = new THREE.Points(particlesGeometry, particlesMaterial);
+scene.add(spiralParticles);
 
 // Animation Function
 function animate() {
     requestAnimationFrame(animate);
 
-    // Rotate the particles on the Y-axis for dynamic animation
-    particles.rotation.y += 0.002;
+    // Rotate Spiral on its Z-axis
+    spiralParticles.rotation.z += 0.002; // Slow rotation for dynamic effect
 
     renderer.render(scene, camera);
 }
 animate();
 
-// Make Renderer Responsive
+// Responsive Rendering
 window.addEventListener("resize", () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;

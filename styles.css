@@ -11,12 +11,12 @@ body {
     position: fixed;
     width: 100%;
     top: 0;
-    height: 35px;
+    height: 50px;
     padding: 0 15px;
     display: flex;
     justify-content: space-between;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 10;
+    background: rgba(0, 0, 0, 0.8); /* Slightly translucent for depth */
+    z-index: 10; /* Always visible on top */
     align-items: center;
 }
 
@@ -27,17 +27,12 @@ body {
 }
 
 .register-button-top {
-    position: absolute;
-    right: 100px;
-    top: 50%;
-    transform: translateY(-50%);
     padding: 6px 20px;
     border: 2px solid white;
     border-radius: 8px;
     background-color: black;
     color: white;
     text-decoration: none;
-    box-shadow: none;
     transition: all 0.3s ease;
 }
 
@@ -48,20 +43,21 @@ body {
     transform: scale(1.05);
 }
 
-/* Spiral Animation in Hero Section */
+/* Spiral Animation */
 .spiral-container {
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 0; /* Place the spiral behind the text */
+    z-index: -1; /* Behind hero text */
+    overflow: hidden;
 }
 
 .spiral-container::before, .spiral-container::after {
-    content: "";
+    content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    animation: rotateSpiral 10s linear infinite; /* Infinite spiral rotation */
+    animation: rotateSpiral 12s linear infinite; /* Infinite rotation */
 }
 
 .spiral-container::before {
@@ -70,7 +66,7 @@ body {
 }
 
 .spiral-container::after {
-    background: radial-gradient(circle, rgba(0, 0, 255, 0.8), transparent 50%);
+    background: radial-gradient(circle, rgba(0, 128, 255, 0.8), transparent 50%);
     clip-path: polygon(50% 50%, 60% 45%, 25% 60%, 75% 50%);
 }
 
@@ -85,7 +81,7 @@ body {
 
 /* Hero Section */
 #hero {
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
     position: relative;
     text-align: center;
     color: white;
@@ -93,72 +89,29 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Prevent scrolling issues */
 }
 
 .conference-title {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: bold;
-    z-index: 1; /* Keep text above spiral */
+    z-index: 1; /* Over spiral */
 }
 
 .subtitle {
-    font-size: 2rem;
-    margin-top: 10px;
-    z-index: 1; /* Keep text above spiral */
+    font-size: 1.5rem;
+    z-index: 1;
 }
 
 .learn-more-btn {
     margin-top: 20px;
     padding: 12px 30px;
-    font-size: 1.2rem;
     border: 2px solid white;
     background-color: transparent;
     color: white;
     border-radius: 5px;
     text-decoration: none;
-    z-index: 1; /* Keep button above spiral */
-    transition: background-color 0.3s ease-in-out;
-}
-
-.learn-more-btn:hover {
-    background: linear-gradient(to right, #ff0055, #36007d);
-    color: white;
-}
-
-
-/* Hero Section */
-#hero {
-    height: 100vh;
-    background-color: black; /* Banner removed, plain black background */
-    text-align: center;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.conference-title {
-    font-size: 5rem;
-    font-weight: bold;
-}
-
-.subtitle {
-    font-size: 2rem;
-    margin-top: 10px;
-}
-
-.learn-more-btn {
-    margin-top: 20px;
-    padding: 12px 30px;
-    font-size: 1.2rem;
-    border: 2px solid white;
-    background-color: transparent;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease-in-out;
+    z-index: 1;
+    transition: all 0.3s ease;
 }
 
 .learn-more-btn:hover {
@@ -168,56 +121,28 @@ body {
 
 /* Objectives Section */
 #objectives {
-    height: 200vh; /* Extended height for scrolling */
-    padding: 50px 20px;
-    background-color: black; /* Same as hero section */
+    min-height: 150vh;
+    background-color: black;
     color: white;
     text-align: center;
+    padding: 50px;
 }
 
 .section-header {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: bold;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    text-align: center;
-    color: white;
+    margin: 30px 0;
 }
 
-/* Layer 1: Static Boxes */
-.layer-1 {
+.layer-1, .layer-2 {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    gap: 30px; /* Space between boxes */
-    margin-bottom: 50px;
+    justify-content: center;
+    gap: 50px;
 }
 
 .objective-box {
-    width: 300px;
-    height: 150px;
-    background-color: #2E2E2E;
-    text-align: center;
-    border-radius: 15px;
-    margin: 20px;
-    font-size: 1.2rem;
+    background: #2E2E2E;
+    padding: 20px;
+    border-radius: 8px;
     color: white;
 }
-
-/* Layer 2: Dynamic Boxes */
-.layer-2 {
-    display: flex;
-    justify-content: center; /* Center Layer 2 over Layer 1 */
-    gap: 150px; /* Space between D and E */
-    margin-top: 75px;
-}
-
-.dynamic-box {
-    width: 300px;
-    height: 160px;
-    background-color: #3A3A3A;
-    border-radius: 15px;
-    text-align: center;
-    transform: translateY(0); /* Initial upright position */
-    transition: transform 0.2s linear; /* Smooth movement effect */
-}
-

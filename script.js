@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const globe = document.getElementById("globe");
   const spiral = document.getElementById("spiral");
 
-  // After 3 seconds, hide the globe and show the spiral
+  // After 3 seconds, hide the globe and show the galaxy spiral animation
   setTimeout(() => {
-    globe.style.display = "none"; // Hide the globe completely after fade-out
-    spiral.hidden = false; // Show the spiral container
-  }, 3000); // Matches the fadeOut duration (3 seconds)
+    globe.style.display = "none"; // Hides the rotating globe
+    spiral.hidden = false;       // Displays the spiral galaxy
+  }, 3000); // Matches the fade-out duration of the globe
 });

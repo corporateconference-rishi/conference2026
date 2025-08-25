@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgNite 2026 Conference</title>
     <style>
-        /* Reset Styles */
+        /* Reset styles */
         body {
             margin: 0;
-            overflow: hidden;
+            overflow: hidden; /* Hide scrollbars */
             font-family: Arial, sans-serif;
-            background-color: black; /* Dark background for the galaxy */
+            background-color: black; /* Dark background center spiral */
         }
 
         /* Center Header */
@@ -21,18 +21,18 @@
             transform: translate(-50%, -50%);
             text-align: center;
             color: white;
-            z-index: 10; /* Ensure header is above spiral animation */
+            z-index: 10; /* Ensure text stays above animation */
         }
 
         .header h1 {
-            font-size: 5rem; /* Bold and large size */
-            font-weight: 900; /* Extra-bold */
+            font-size: 5rem; /* Large title */
+            font-weight: 900; /* Extra-bold title */
             margin: 0;
         }
 
         .header p {
-            font-size: 2rem; /* Subtitle size */
-            margin: 20px 0 0; /* Space below the title */
+            font-size: 1.8rem; /* Subtitle size */
+            margin: 20px 0 0; /* Space below title */
         }
 
         .header a {
@@ -53,21 +53,21 @@
             color: white;
         }
 
-        /* Canvas for Three.js Animation */
+        /* Canvas for Three.js */
         canvas {
             display: block;
         }
     </style>
 </head>
 <body>
-    <!-- Header Title -->
+    <!-- Header -->
     <div class="header">
         <h1>AgNite 2026 Conference</h1>
         <p>Forefront of Innovation, Commerce, and Artificial Intelligence</p>
         <a href="#">Learn More ➔</a>
     </div>
 
-    <!-- Three.js Script -->
+    <!-- Three.js Canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>

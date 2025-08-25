@@ -1,4 +1,9 @@
-// Create a Three.js Scene and Renderer
+// Configuration
+const numParticles = 1000; // Total particles
+const spiralRadius = 50; // Radius of the spiral
+const particleSize = 0.1; // Size of each particle (galaxy star)
+
+// Create Scene, Camera, and Renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
     75, // Field of view
@@ -6,60 +11,68 @@ const camera = new THREE.PerspectiveCamera(
     0.1, // Near clipping
     1000 // Far clipping
 );
-const renderer = new THREE.WebGLRenderer();
+camera.position.z = 100; // Position the camera further back for better view
+
+const renderer = new THREE.WebGLRenderer({ antialias: true }); // Smooth edges
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Create Spiral Geometry
-const spiralGeometry = new THREE.BufferGeometry();
-const spiralVertices = [];
-const numPoints = 600; // Increase for smoothness and unlimited loops
-const radius = 5; // Spiral radius
+// Create Particle Geometry
+const particlesGeometry = new THREE.BufferGeometry();
+const particlePositions = [];
+const particleColors = [];
+const spiralDepth = 0.3; // Spread depth of the spiral
 
-for (let i = 0; i < numPoints; i++) {
-    const angle = i * 0.1; // Spiral angle (dynamic for unlimited loops)
-    const z = i * 0.05; // Spiral depth
-    spiralVertices.push(
-        Math.cos(angle) * radius, // X-coordinate
-        Math.sin(angle) * radius, // Y-coordinate
-        z // Z-coordinate for depth
-    );
+for (let i = 0; i < numParticles; i++) {
+    const angle = i * 0.1; // Spiral angle (dynamic)
+    const x = Math.cos(angle) * spiralRadius * (i / numParticles); // Spiral widening outwards
+    const y = Math.sin(angle) * spiralRadius * (i / numParticles);
+    const z = i * spiralDepth; // Spiral depth
+
+    // Add positions
+    particlePositions.push(x, y, z);
+
+    // Add colors for each particle
+    const r = Math.random();
+    const g = Math.random();
+    const b = Math.random();
+    particleColors.push(r, g * 0.5, b); // Dim the green channel
 }
 
-// Create Dynamic Galaxy Colors
-const colors = new Float32Array(numPoints * 3);
-for (let i = 0; i < numPoints; i++) {
-    colors[i * 3] = Math.random(); // Red
-    colors[i * 3 + 1] = Math.random() * 0.5; // Green
-    colors[i * 3 + 2] = 1; // Blue
-}
-spiralGeometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
-
-// Add Spiral Geometry to Scene
-spiralGeometry.setAttribute(
-    "position",
-    new THREE.Float32BufferAttribute(spiralVertices, 3)
+// Assign Attributes to Geometry
+particlesGeometry.setAttribute(
+    'position',
+    new THREE.Float32BufferAttribute(particlePositions, 3)
 );
-const spiralMaterial = new THREE.PointsMaterial({
-    size: 0.1, // Star point size
-    vertexColors: true, // Enable galaxy-like colors
+particlesGeometry.setAttribute(
+    'color',
+    new THREE.Float32BufferAttribute(particleColors, 3)
+);
+
+// Material for Particles
+const particlesMaterial = new THREE.PointsMaterial({
+    size: particleSize,
+    vertexColors: true, // Use color attribute from geometry
 });
-const spiral = new THREE.Points(spiralGeometry, spiralMaterial);
-scene.add(spiral);
 
-// Set Camera Position
-camera.position.z = 30;
+// Create Particle Mesh and Add to Scene
+const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+scene.add(particles);
 
-// Animate the Spiral Galaxy
+// Animation Function
 function animate() {
-    requestAnimationFrame(animate); // Keep animating
-    spiral.rotation.z += 0.005; // Slow rotation
-    renderer.render(scene, camera); // Render the scene
+    requestAnimationFrame(animate);
+
+    // Rotate Spiral Slowly
+    particles.rotation.y += 0.005; // Slow rotation
+
+    // Render Scene
+    renderer.render(scene, camera);
 }
 animate();
 
-// Make Canvas Responsive
-window.addEventListener("resize", () => {
+// Responsive Canvas
+window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();

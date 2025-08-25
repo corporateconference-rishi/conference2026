@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     scroll-behavior: smooth;
-    background-color: black; /* Plain black background */
+    background-color: transparent; /* Plain black background */
 }
 
 /* Spiral Animation Section (First Section) */
@@ -51,42 +51,58 @@ body {
     position: fixed;
     width: 100%;
     top: 0;
-    height: 50px;
-    padding: 0 15px;
+    height: 35px; /* Reduced height for sleeker design */
+    padding: 0 15px; /* Slimmer padding */
     display: flex;
-    justify-content: space-between;
-    background: rgba(0, 0, 0, 0.8); /* Slightly translucent bar */
-    z-index: 10; /* Always visible above everything */
+    justify-content: space-between; /* Space out logo and button */
+    background: rgba(0, 0, 0, 0.8); /* Slightly darker translucent bar */
+    z-index: 10; /* Maintain above all sections */
     align-items: center;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Sleeker logo */
     font-weight: bold;
     color: white;
 }
 
 .register-button-top {
-    padding: 6px 20px;
+    position: absolute; /* Explicit positioning */
+    right: 100px; /* Move the Register button 100px from the right edge */
+    top: 50%; /* Vertically centered */
+    transform: translateY(-50%); /* Correct vertical alignment */
+    padding: 6px 20px; /* Compact size */
     border: 2px solid white;
-    border-radius: 8px;
+    border-radius: 8px; /* Rounded corners */
     background-color: black;
     color: white;
+    font-size: 0.9rem; /* Sleeker font size */
     text-decoration: none;
-    transition: all 0.3s ease;
+    box-shadow: none;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
+/* Glowing Effect on Hover */
 .register-button-top:hover {
     background-color: white;
     color: black;
-    box-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
-    transform: scale(1.05);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 1); /* Glowing effect */
+    transform: scale(1.05); /* Slight size increase */
+}
+}
+
+/* Glowing Effect on Hover */
+.register-button-top:hover {
+    background-color: white; /* Change background to white */
+    color: black; /* Change text color to black */
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 1); /* Intense white glow */
+    transform: scale(1.05); /* Slight scaling effect */
 }
 
 /* Hero Section */
 #hero {
     height: 100vh;
-    position: relative;
+    background-color: black; /* Banner removed, plain black background */
     text-align: center;
     color: white;
     display: flex;
@@ -96,26 +112,25 @@ body {
 }
 
 .conference-title {
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: bold;
-    z-index: 10;
 }
 
 .subtitle {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-top: 10px;
-    z-index: 10;
 }
 
 .learn-more-btn {
     margin-top: 20px;
     padding: 12px 30px;
+    font-size: 1.2rem;
     border: 2px solid white;
     background-color: transparent;
     color: white;
     border-radius: 5px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .learn-more-btn:hover {
@@ -125,32 +140,56 @@ body {
 
 /* Objectives Section */
 #objectives {
-    min-height: 150vh;
-    background-color: black;
+    height: 200vh; /* Extended height for scrolling */
+    padding: 50px 20px;
+    background-color: black; /* Same as hero section */
     color: white;
     text-align: center;
-    padding: 50px;
 }
 
 .section-header {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: bold;
-    margin: 30px 0;
-}
-
-.layer-1, .layer-2 {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-}
-
-.objective-box {
-    background: #2E2E2E;
-    padding: 20px;
-    border-radius: 8px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
     color: white;
 }
 
-.dynamic-box {
-    transition: transform 0.3s ease-out; /* Smooth scrolling for layer 2 */
+/* Layer 1: Static Boxes */
+.layer-1 {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    gap: 30px; /* Space between boxes */
+    margin-bottom: 50px;
 }
+
+.objective-box {
+    width: 300px;
+    height: 150px;
+    background-color: #2E2E2E;
+    text-align: center;
+    border-radius: 15px;
+    margin: 20px;
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Layer 2: Dynamic Boxes */
+.layer-2 {
+    display: flex;
+    justify-content: center; /* Center Layer 2 over Layer 1 */
+    gap: 150px; /* Space between D and E */
+    margin-top: 75px;
+}
+
+.dynamic-box {
+    width: 300px;
+    height: 160px;
+    background-color: #3A3A3A;
+    border-radius: 15px;
+    text-align: center;
+    transform: translateY(0); /* Initial upright position */
+    transition: transform 0.2s linear; /* Smooth movement effect */
+}
+

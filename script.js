@@ -1,3 +1,4 @@
+// Create a Three.js Scene and Renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
     75, // Field of view

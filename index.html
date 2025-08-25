@@ -11,28 +11,30 @@
             overflow: hidden; /* Hide scrollbars */
             font-family: Arial, sans-serif;
             background-color: black; /* Dark background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
         }
 
         /* Header styles */
         .header {
             position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
             text-align: center;
             color: white;
             z-index: 10; /* Ensure header is above animation */
         }
 
         .header h1 {
-            font-size: 3rem;
-            font-weight: bold;
+            font-size: 4rem; /* Larger and more emphasized */
+            font-weight: 900; /* Extra-bold */
             margin: 0;
         }
 
         .header p {
-            font-size: 1.5rem;
-            margin: 10px 0 0;
+            font-size: 1.8rem; /* Increased size for subtitle */
+            font-weight: 400; /* Normal weight for subtitle */
+            margin: 16px 0 0; /* Slight space below title */
         }
 
         /* Canvas container */
@@ -42,7 +44,6 @@
     </style>
 </head>
 <body>
-
     <!-- Header -->
     <div class="header">
         <h1>AgNite 2026 Conference</h1>

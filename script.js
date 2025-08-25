@@ -1,86 +1,64 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const boxD = document.querySelector('#box-d');
-    const boxE = document.querySelector('#box-e');
-    const layer1 = document.querySelector('.layer-1');
-
-    document.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        const layer1Top = layer1.offsetTop;
-
-        // Smooth animation for Box D
-        const relativeScrollD = Math.min((scrollY - layer1Top) * 0.3, 150);
-        boxD.style.transform = `translateY(-${relativeScrollD}px)`;
-
-        // Smooth animation for Box E
-        const relativeScrollE = Math.min((scrollY - layer1Top) * 0.4, 150);
-        boxE.style.transform = `translateY(-${relativeScrollE}px)`;
-    });
-});
-// Create Scene and Renderer
+// Create a Three.js Scene and Renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
+    75, // Field of view
+    window.innerWidth / window.innerHeight, // Aspect ratio
+    0.1, // Near clipping
+    1000 // Far clipping
 );
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Create Galaxy Globe Geometry
-const sphereGeometry = new THREE.SphereBufferGeometry(5, 32, 32); // Sphere radius: 5, detail level: 32x32
-const galaxyMaterial = new THREE.PointsMaterial({
-    size: 0.1, // Size of each dot
-    color: new THREE.Color(0xffffff), // White glow (can randomize later)
-    vertexColors: true, // Enable individual dot colors
-});
+// Create Spiral Geometry
+const spiralGeometry = new THREE.BufferGeometry();
+const spiralVertices = [];
+const numPoints = 600; // Increase for smoothness and unlimited loops
+const radius = 5; // Spiral radius
 
-const particles = [];
-const colors = [];
-
-for (let i = 0; i < sphereGeometry.attributes.position.count; i++) {
-    particles.push(
-        sphereGeometry.attributes.position.array[i * 3],    // X
-        sphereGeometry.attributes.position.array[i * 3 + 1], // Y
-        sphereGeometry.attributes.position.array[i * 3 + 2]  // Z
-    );
-
-    // Add galaxy-like colors: randomized pinks/blues
-    colors.push(
-        Math.random(), // Red
-        Math.random() * 0.5, // Green
-        Math.random() * 1.0 // Blue
+for (let i = 0; i < numPoints; i++) {
+    const angle = i * 0.1; // Spiral angle (dynamic for unlimited loops)
+    const z = i * 0.05; // Spiral depth
+    spiralVertices.push(
+        Math.cos(angle) * radius, // X-coordinate
+        Math.sin(angle) * radius, // Y-coordinate
+        z // Z-coordinate for depth
     );
 }
 
-// Set attributes for the geometry (positions and colors)
-const particleGeometry = new THREE.BufferGeometry();
-particleGeometry.setAttribute(
+// Create Dynamic Galaxy Colors
+const colors = new Float32Array(numPoints * 3);
+for (let i = 0; i < numPoints; i++) {
+    colors[i * 3] = Math.random(); // Red
+    colors[i * 3 + 1] = Math.random() * 0.5; // Green
+    colors[i * 3 + 2] = 1; // Blue
+}
+spiralGeometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+
+// Add Spiral Geometry to Scene
+spiralGeometry.setAttribute(
     "position",
-    new THREE.Float32BufferAttribute(particles, 3)
+    new THREE.Float32BufferAttribute(spiralVertices, 3)
 );
-particleGeometry.setAttribute(
-    "color",
-    new THREE.Float32BufferAttribute(colors, 3)
-);
+const spiralMaterial = new THREE.PointsMaterial({
+    size: 0.1, // Star point size
+    vertexColors: true, // Enable galaxy-like colors
+});
+const spiral = new THREE.Points(spiralGeometry, spiralMaterial);
+scene.add(spiral);
 
-// Create Points for the Sphere (Galaxy Effect)
-const galaxyGlobe = new THREE.Points(particleGeometry, galaxyMaterial);
-scene.add(galaxyGlobe);
+// Set Camera Position
+camera.position.z = 30;
 
-// Position Camera
-camera.position.z = 15;
-
-// Animation Loop (Globe Rotation)
+// Animate the Spiral Galaxy
 function animate() {
-    requestAnimationFrame(animate);
-    galaxyGlobe.rotation.y += 0.005; // Gentle spinning motion on Y-axis
-    renderer.render(scene, camera);
+    requestAnimationFrame(animate); // Keep animating
+    spiral.rotation.z += 0.005; // Slow rotation
+    renderer.render(scene, camera); // Render the scene
 }
 animate();
 
-// Responsive Canvas
+// Make Canvas Responsive
 window.addEventListener("resize", () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;

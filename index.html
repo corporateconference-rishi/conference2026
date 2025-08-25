@@ -3,17 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaxy Spinning DNA Experiment</title>
+    <title>AgNite 2026 Conference</title>
     <style>
+        /* Reset styles */
         body {
             margin: 0;
-            overflow: hidden; /* No scrollbars */
-            background-color: black; /* Dark background for the galaxy DNA */
+            overflow: hidden; /* Hide scrollbars */
+            font-family: Arial, sans-serif;
+            background-color: black; /* Dark background */
+        }
+
+        /* Header styles */
+        .header {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            z-index: 10; /* Ensure header is above animation */
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            margin: 10px 0 0;
+        }
+
+        /* Canvas container */
+        canvas {
+            display: block; /* Remove spacing below */
         }
     </style>
 </head>
 <body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>AgNite 2026 Conference</h1>
+        <p>Forefront of innovation, commerce, and Artificial Intelligence</p>
+    </div>
+
+    <!-- Three.js Canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>

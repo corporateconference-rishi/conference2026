@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgNite 2026 Conference</title>
     <style>
-        /* Reset Styles */
+        /* Reset styles */
         body {
             margin: 0;
             overflow: hidden; /* Hide scrollbars */
             font-family: Arial, sans-serif;
-            background-color: black; /* Dark background */
+            background-color: black; /* Dark background for drilling animation */
         }
 
-        /* Center Header */
+        /* Center Header Content */
         .header {
             position: absolute;
             top: 50%;
@@ -21,7 +21,7 @@
             transform: translate(-50%, -50%);
             text-align: center;
             color: white;
-            z-index: 10; /* Ensure text stays above animation */
+            z-index: 10; /* Ensure header is above animation */
         }
 
         .header h1 {
@@ -32,7 +32,7 @@
 
         .header p {
             font-size: 1.8rem; /* Subtitle size */
-            margin: 20px 0 0; /* Space below title */
+            margin: 20px 0 0;
         }
 
         .header a {
@@ -55,7 +55,7 @@
 
         /* Canvas for Three.js */
         canvas {
-            display: block; /* Ensure no whitespace */
+            display: block;
         }
     </style>
 </head>
@@ -67,8 +67,8 @@
         <a href="#">Learn More ➔</a>
     </div>
 
-    <!-- Three.js Script -->
+    <!-- Three.js Animation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js"></script>   
 </body>
 </html>

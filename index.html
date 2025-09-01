@@ -1,16 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgNite 2026 Conference</title>
     <style>
-        /* Reset Styles */
+        /* Reset styles */
         body {
             margin: 0;
-            overflow: hidden; /* Hide scrollbars */
+            overflow: hidden;
             font-family: Arial, sans-serif;
-            background-color: black; /* Dark background */
+            background-color: black;
+        }
+
+        /* Menu Bar */
+        .menu-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.85); /* Sleek translucent background */
+            display: flex;
+            justify-content: space-between; /* Spread items out (left/right) */
+            align-items: center;
+            padding: 0 20px;
+            z-index: 100; /* Above everything */
+        }
+
+        .menu-bar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .menu-bar .register-btn {
+            padding: 8px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            border: 2px solid white;
+            border-radius: 5px;
+            background: transparent;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .menu-bar .register-btn:hover {
+            background: white;
+            color: black;
         }
 
         /* Center Header */
@@ -26,7 +65,7 @@
 
         .header h1 {
             font-size: 5rem; /* Large title */
-            font-weight: 900; /* Extra-bold title */
+            font-weight: 900; /* Extra-bold */
             margin: 0;
         }
 
@@ -53,13 +92,20 @@
             color: white;
         }
 
-        /* Canvas for Three.js */
+        /* Fullscreen Canvas */
         canvas {
             display: block; /* Ensure no whitespace */
         }
     </style>
 </head>
+
 <body>
+    <!-- Sleek Menu Bar -->
+    <div class="menu-bar">
+        <div class="logo">AgNite 2026</div>
+        <a href="#" class="register-btn">Register</a>
+    </div>
+
     <!-- Header Content -->
     <div class="header">
         <h1>AgNite 2026 Conference</h1>
@@ -67,7 +113,7 @@
         <a href="#">Learn More ➔</a>
     </div>
 
-    <!-- Three.js Script -->
+    <!-- Three.js Animation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>

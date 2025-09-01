@@ -23,38 +23,35 @@
             height: 50px; /* Slim menu bar for sleekness */
             background: rgba(0, 0, 0, 0.6); /* Translucent background */
             display: flex;
-            justify-content: space-between; /* Spread items horizontally */
-            align-items: center; /* Vertically center items */
+            justify-content: space-between;
+            align-items: center;
             padding: 0 20px; /* Bring edges closer */
             z-index: 1000; /* Above all elements */
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6); /* Shadow effect */
         }
 
         .menu-bar .logo {
-            font-family: Arial, sans-serif;
-            font-size: 1.4rem; /* Sleek modern size */
+            font-size: 1.4rem;
             font-weight: bold;
-            color: white; /* White text */
-            margin-right: 30px; /* Give space between logo and button */
+            color: white;
         }
 
         .menu-bar .register-btn {
-            font-family: Arial, sans-serif;
             font-size: 1rem;
             font-weight: 600;
-            color: white; /* Default white text */
+            color: white;
             padding: 8px 20px;
             background: transparent;
-            border: 2px solid white; /* White border */
+            border: 2px solid white;
             border-radius: 5px;
             text-decoration: none;
-            transition: all 0.3s ease; /* Smooth hover effect */
+            transition: all 0.3s ease;
         }
 
         .menu-bar .register-btn:hover {
-            background: white; /* Background switches to white on hover */
-            color: black; /* Text switches to black on hover */
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7); /* Subtle glow effect */
+            background: white;
+            color: black;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
         }
 
         /* Center Header */
@@ -69,14 +66,14 @@
         }
 
         .header h1 {
-            font-size: 5rem; /* Large title */
-            font-weight: 900; /* Extra-bold title font */
-            margin: 0; /* No extra margin */
+            font-size: 5rem;
+            font-weight: 900;
+            margin: 0;
         }
 
         .header p {
-            font-size: 1.8rem; /* Subtitle size */
-            margin: 20px 0 0; /* Space below the title */
+            font-size: 1.8rem;
+            margin: 20px 0 0;
         }
 
         .header a {
@@ -89,70 +86,64 @@
             color: white;
             border-radius: 5px;
             text-decoration: none;
-            transition: all 0.3s ease; /* Smooth transition */
+            transition: all 0.3s ease;
         }
 
         .header a:hover {
-            background: linear-gradient(to right, #ff0055, #36007d); /* Galaxy gradient effect */
+            background: linear-gradient(to right, #ff0055, #36007d);
             color: white;
         }
 
-        /* Canvas for Three.js Rendering */
-        canvas {
-            display: block; /* Ensure no whitespace */
+        /* Objectives Section */
+        #objectives-section {
+            width: 100%;
+            padding: 50px 10%;
+            box-sizing: border-box;
+            background-color: black;
+            z-index: 5; /* Above canvas */
         }
 
-<style>
+        #objectives-section .section-header {
+            text-align: center;
+            font-size: 2.5rem;
+            color: white;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
 
-<style>
-    /* Reset Styles */
-    body {
-        margin: 0;
-        overflow: hidden; /* Hide scrollbars */
-        font-family: Arial, sans-serif;
-        background-color: black; /* Dark background */
-    }
+        .objectives-row {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-bottom: 50px;
+            gap: 20px;
+        }
 
-    /* Sleek Menu Bar */
-    .menu-bar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 50px; /* Slim menu bar for sleekness */
-        background: rgba(0, 0, 0, 0.6); /* Translucent background */
-        display: flex;
-        justify-content: space-between; /* Spread items horizontally */
-        align-items: center; /* Vertically center items */
-        padding: 0 20px; /* Bring edges closer */
-        z-index: 1000; /* Above all elements */
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6); /* Shadow effect */
-    }
+        .objective-box {
+            background-color: #292929; /* Dark grey background */
+            padding: 20px;
+            border-radius: 15px;
+            width: 30%;
+            text-align: center;
+            color: white;
+        }
 
-    .menu-bar .logo {
-        font-family: Arial, sans-serif;
-        font-size: 1.4rem; /* Sleek modern size */
-        font-weight: bold;
-        color: white; /* White text */
-        margin-right: 30px; /* Give space between logo and button */
-    }
+        .dynamic-box {
+            position: absolute;
+            transform: translateY(0);
+            z-index: 5;
+        }
 
-    .menu-bar .register-btn {
-        font-family: Arial, sans-serif;
-        font-size: 1rem;
-        font-weight: 600;
-        color: white; /* Default white text */
-        padding: 8px 20px;
-        background: transparent;
-        border: 2px solid white; /* White border */
-        border-radius: 5px;
-        text-decoration: none;
-        transition: all 0.3s ease; /* Smooth hover effect */
-    }
-
-    .menu-bar .register-btn:hover {
-        background
-    
+        canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Behind everything! */
+        }
+    </style>
 </head>
 
 <body>
@@ -174,150 +165,44 @@
     <script>
         const scene = new THREE.Scene();
 
-        // Camera
-        const camera = new THREE.PerspectiveCamera(
-            75,
-            window.innerWidth / window.innerHeight,
-            0.1,
-            1000
-        );
-        camera.position.set(0, 0, 50); // Set camera back slightly for galaxy view
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 50);
 
-        // Renderer
         const renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // Spiral Galaxy Geometry
-        const particleCount = 1500; // Total galaxy particles
         const particlesGeometry = new THREE.BufferGeometry();
         const particlePositions = [];
-        const particleColors = [];
 
-        // Loop to create spiral galaxy particles
-        for (let i = 0; i < particleCount; i++) {
-            const angle = i * 0.2; // Angle of spiral rotation
-            const radius = Math.pow(i / particleCount, 0.5) * 40; // Radius gradually expands outward
-            const x = Math.cos(angle) * radius; // X position
-            const y = Math.sin(angle) * radius; // Y position
-            const z = Math.sin(i * 0.02) * 10; // Depth variation in Z-axis
-
+        for (let i = 0; i < 1000; i++) {
+            const x = Math.random() * 100 - 50;
+            const y = Math.random() * 100 - 50;
+            const z = Math.random() * 100 - 50;
             particlePositions.push(x, y, z);
-
-            // Add dynamic colors for particles
-            const r = Math.random() * 0.8 + 0.2; // Vary red
-            const g = Math.random() * 0.5; // Green color is dimmed
-            const b = Math.random() * 0.8 + 0.2; // Vary blue
-            particleColors.push(r, g, b);
         }
-
-        // Assign position and color attributes to geometry
         particlesGeometry.setAttribute(
             "position",
             new THREE.Float32BufferAttribute(particlePositions, 3)
         );
-        particlesGeometry.setAttribute(
-            "color",
-            new THREE.Float32BufferAttribute(particleColors, 3)
-        );
 
-        const particleMaterial = new THREE.PointsMaterial({
-            size: 0.3, // Render smaller particles for hypnotic effect
-            vertexColors: true,
-        });
+        const particleMaterial = new THREE.PointsMaterial({ size: 0.1 });
+        const particles = new THREE.Points(particlesGeometry, particleMaterial);
+        scene.add(particles);
 
-        // Create the galaxy particle system
-        const galaxy = new THREE.Points(particlesGeometry, particleMaterial);
-        scene.add(galaxy);
-
-        // Animation loop
         function animate() {
             requestAnimationFrame(animate);
-
-            // Slowly rotate the galaxy
-            galaxy.rotation.y += 0.004;
-            galaxy.rotation.x += 0.002;
-
+            particles.rotation.y += 0.001;
             renderer.render(scene, camera);
         }
         animate();
 
-        // Make the canvas responsive
         window.addEventListener("resize", () => {
             renderer.setSize(window.innerWidth, window.innerHeight);
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
         });
     </script>
-    <!-- OBJECTIVES SECTION -->
-<div id="objectives-section">
-    <!-- Section Header -->
-    <h2 class="section-header">OBJECTIVES OF THE CONFERENCE</h2>
-    
-    <!-- Row 1: Boxes A, B, C -->
-    <div class="objectives-row">
-        <div class="objective-box" id="box-a">
-            <h3>Transformation</h3>
-            <p>Exploring how AI revolutionizes global commerce through automation, predictive insights, and customer-centric innovations, enabling businesses to operate with speed, efficiency, and adaptability in highly competitive markets.</p>
-        </div>
-        <div class="objective-box" id="box-b">
-            <h3>Interdisciplinarity</h3>
-            <p>Encouraging cross-sector research in retail, finance, logistics, and MSMEs to design AI solutions that are holistic, sustainable, and inclusive for diverse industries.</p>
-        </div>
-        <div class="objective-box" id="box-c">
-            <h3>Collaboration</h3>
-            <p>Strengthening cooperation among academia, industry leaders, and policymakers to build shared frameworks, accelerate innovation, and shape policies that support responsible AI-driven economic development.</p>
-        </div>
-    </div>
-
-    <!-- Row 2: Boxes D, E -->
-    <div class="objectives-row">
-        <div class="objective-box dynamic-box" id="box-d">
-            <h3>Ethics</h3>
-            <p>Addressing critical issues of fairness, inclusivity, and transparency to ensure AI technologies serve humanity equitably, safeguard privacy, and reduce risks of bias or misuse.</p>
-        </div>
-        <div class="objective-box dynamic-box" id="box-e">
-            <h3>Empowerment</h3>
-            <p>Preparing business leaders, educators, and youth with AI capabilities, fostering digital literacy, innovation-driven thinking, and future-ready skills to thrive in the age of intelligent technologies.</p>
-        </div>
-    </div>
-</div>
-            
-<script>
-    const boxD = document.getElementById("box-d");
-    const boxE = document.getElementById("box-e");
-
-    const handleScroll = () => {
-        const scrollY = window.scrollY; // Track vertical scroll position
-        const sectionTop = document.getElementById("objectives-section").offsetTop;
-        const triggerPoint = sectionTop + 50; // Adjust trigger point
-
-        // Update positions dynamically
-        if (scrollY >= triggerPoint && scrollY <= triggerPoint + 400) {
-            const moveY = scrollY - triggerPoint;
-
-            boxD.style.transform = `translateY(${-moveY * 0.5}px)`; // Move D upwards
-            boxE.style.transform = `translateY(${-moveY * 0.5}px)`; // Move E upwards
-
-            // Opacity update for A, B, C
-            document.querySelectorAll(".objective-box:not(.dynamic-box)").forEach((box) => {
-                box.style.opacity = 1 - (moveY / 400) * 0.9; // Fade as overlapped
-            });
-        }
-
-        // Reset positions when out of range
-        if (scrollY < triggerPoint || scrollY > triggerPoint + 400) {
-            boxD.style.transform = `translateY(0px)`;
-            boxE.style.transform = `translateY(0px)`;
-            document.querySelectorAll(".objective-box:not(.dynamic-box)").forEach((box) => {
-                box.style.opacity = 1; // Restore opacity
-            });
-        }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-</script>
-            
 </body>
 
 </html>

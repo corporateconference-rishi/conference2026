@@ -5,108 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgNite 2026 Conference</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-    <style>
-        /* Reset styles */
-        body {
-            margin: 0;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-            background-color: black;
-        }
-
-        /* Menu Bar */
-        .menu-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            background: rgba(0, 0, 0, 0.6); /* Translucent black background */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            z-index: 1000; /* Ensures it stays above other elements */
-        }
-
-        .menu-bar .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: white;
-        }
-
-        .menu-bar .register-btn {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            padding: 8px 20px;
-            background: transparent;
-            border: 2px solid white;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .menu-bar .register-btn:hover {
-            background: white;
-            color: black;
-            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
-        }
-
-        /* Header Styles */
-        .header {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-            z-index: 2; /* Ensure it stays above animations */
-        }
-
-        .header h1 {
-            font-size: 5rem;
-            font-weight: 900;
-            margin: 0;
-        }
-
-        .header p {
-            font-size: 1.8rem;
-            margin: 20px 0 0;
-        }
-
-        .header a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            font-size: 1.2rem;
-            border: 2px solid white;
-            background: transparent;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .header a:hover {
-            background: linear-gradient(to right, #ff0055, #36007d);
-            color: white;
-        }
-
-        /* Canvas */
-        canvas {
-            display: block;
-        }
-    </style>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Menu Bar -->
+    <!-- Sleek Menu Bar -->
     <div class="menu-bar">
-        <div class="logo">AGNITE 2026</div>
+        <div class="logo">AgNite 2026</div>
         <a href="#" class="register-btn">Register</a>
     </div>
 
@@ -117,64 +27,61 @@
         <a href="#">Learn More ➔</a>
     </div>
 
-    <!-- Three.js Animation -->
+    <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Three.js Animation to create a Galaxy Effect
-        const canvas = document.createElement("canvas");
-        document.body.appendChild(canvas);
-        const renderer = new THREE.WebGLRenderer({ canvas });
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 5;
+        camera.position.set(0, 0, 50);
 
-        const geometry = new THREE.BufferGeometry();
-        const vertices = [];
-        const colors = [];
-        for (let i = 0; i < 1000; i++) {
-            vertices.push((Math.random() - 0.5) * 10);
-            vertices.push((Math.random() - 0.5) * 10);
-            vertices.push((Math.random() - 0.5) * 10);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
 
-            const color = new THREE.Color(
-                Math.random() * 0x88ff88,
-                Math.random(),
-                Math.random() * 0xff0022
-            );
-            colors.push(color.r, color.g, color.b);
+        const particleCount = 1500;
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlePositions = [];
+        const particleColors = [];
+
+        for (let i = 0; i < particleCount; i++) {
+            const angle = i * 0.2;
+            const radius = Math.pow(i / particleCount, 0.5) * 40;
+            const x = Math.cos(angle) * radius;
+            const y = Math.sin(angle) * radius;
+            const z = Math.sin(i * 0.02) * 10;
+
+            particlePositions.push(x, y, z);
+
+            const r = Math.random() * 0.8 + 0.2;
+            const g = Math.random() * 0.5;
+            const b = Math.random() * 0.8 + 0.2;
+            particleColors.push(r, g, b);
         }
-        geometry.setAttribute(
-            "position",
-            new THREE.Float32BufferAttribute(vertices, 3)
-        );
-        geometry.setAttribute(
-            "color",
-            new THREE.Float32BufferAttribute(colors, 3)
-        );
 
-        const material = new THREE.PointsMaterial({
+        particlesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(particlePositions, 3));
+        particlesGeometry.setAttribute('color', new THREE.Float32BufferAttribute(particleColors, 3));
+
+        const particleMaterial = new THREE.PointsMaterial({
+            size: 0.3,
             vertexColors: true,
-            size: 0.1,
         });
 
-        const points = new THREE.Points(geometry, material);
-        scene.add(points);
+        const galaxy = new THREE.Points(particlesGeometry, particleMaterial);
+        scene.add(galaxy);
 
-        const resize = () => {
+        function animate() {
+            requestAnimationFrame(animate);
+            galaxy.rotation.y += 0.004;
+            galaxy.rotation.x += 0.002;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
             renderer.setSize(window.innerWidth, window.innerHeight);
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
-        };
-        window.addEventListener("resize", resize);
-        resize();
-
-        const loop = () => {
-            requestAnimationFrame(loop);
-            points.rotation.x += 0.001;
-            points.rotation.y += 0.002;
-            renderer.render(scene, camera);
-        };
-        loop();
+        });
     </script>
 </body>
 

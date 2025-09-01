@@ -1,1 +1,76 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgNite 2026 Conference</title>
+    <style>
+        /* Reset Styles */
+        body {
+            margin: 0;
+            overflow: hidden; /* Hide scrollbars */
+            font-family: Arial, sans-serif;
+            background-color: black; /* Dark background */
+        }
+
+        /* Center Header */
+        .header {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 10; /* Ensure text stays above animation */
+        }
+
+        .header h1 {
+            font-size: 5rem; /* Large title */
+            font-weight: 900; /* Extra-bold title */
+            margin: 0;
+        }
+
+        .header p {
+            font-size: 1.8rem; /* Subtitle size */
+            margin: 20px 0 0; /* Space below title */
+        }
+
+        .header a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            border: 2px solid white;
+            background-color: transparent;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .header a:hover {
+            background: linear-gradient(to right, #ff0055, #36007d);
+            color: white;
+        }
+
+        /* Canvas for Three.js */
+        canvas {
+            display: block; /* Ensure no whitespace */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Content -->
+    <div class="header">
+        <h1>AgNite 2026 Conference</h1>
+        <p>Forefront of Innovation, Commerce, and Artificial Intelligence</p>
+        <a href="#">Learn More ➔</a>
+    </div>
+
+    <!-- Three.js Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

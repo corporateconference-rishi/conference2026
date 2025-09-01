@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgNite 2026 Conference</title>
     <style>
-        /* Reset styles */
+        /* Reset Styles */
         body {
             margin: 0;
-            overflow: hidden; /* No scrollbars */
+            overflow: hidden; /* Hide scrollbars */
             font-family: Arial, sans-serif;
-            background-color: black; /* Dark background for galaxy drill */
+            background-color: black; /* Dark background */
         }
 
-        /* Center Header Content */
+        /* Center Header */
         .header {
             position: absolute;
             top: 50%;
@@ -25,38 +25,37 @@
         }
 
         .header h1 {
-            font-size: 6rem; /* Large title */
-            font-weight: 900; /* Bold title */
+            font-size: 5rem; /* Large title */
+            font-weight: 900; /* Extra-bold title */
             margin: 0;
         }
 
         .header p {
-            font-size: 2rem; /* Subtitle size */
-            margin: 15px 0;
+            font-size: 1.8rem; /* Subtitle size */
+            margin: 20px 0 0; /* Space below title */
         }
 
         .header a {
             display: inline-block;
-            font-size: 1.4rem;
-            font-weight: 600;
+            margin-top: 20px;
             padding: 12px 30px;
+            font-size: 1.2rem;
             border: 2px solid white;
-            border-radius: 5px;
+            background-color: transparent;
             color: white;
-            background: transparent;
+            border-radius: 5px;
             text-decoration: none;
-            transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease;
         }
 
         .header a:hover {
-            border-color: #ff6fa1;
-            background: linear-gradient(to right, #ff5f95, #735eff);
+            background: linear-gradient(to right, #ff0055, #36007d);
             color: white;
         }
 
-        /* Fullscreen Canvas */
+        /* Canvas for Three.js */
         canvas {
-            display: block;
+            display: block; /* Ensure no whitespace */
         }
     </style>
 </head>
@@ -68,7 +67,7 @@
         <a href="#">Learn More ➔</a>
     </div>
 
-    <!-- Three.js Galaxy Animation -->
+    <!-- Three.js Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>

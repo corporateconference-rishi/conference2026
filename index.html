@@ -101,7 +101,57 @@
         canvas {
             display: block; /* Ensure no whitespace */
         }
-    </style>
+
+
+<style>
+    /* Reset Styles */
+    body {
+        margin: 0;
+        overflow: hidden; /* Hide scrollbars */
+        font-family: Arial, sans-serif;
+        background-color: black; /* Dark background */
+    }
+
+    /* Sleek Menu Bar */
+    .menu-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px; /* Slim menu bar for sleekness */
+        background: rgba(0, 0, 0, 0.6); /* Translucent background */
+        display: flex;
+        justify-content: space-between; /* Spread items horizontally */
+        align-items: center; /* Vertically center items */
+        padding: 0 20px; /* Bring edges closer */
+        z-index: 1000; /* Above all elements */
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6); /* Shadow effect */
+    }
+
+    .menu-bar .logo {
+        font-family: Arial, sans-serif;
+        font-size: 1.4rem; /* Sleek modern size */
+        font-weight: bold;
+        color: white; /* White text */
+        margin-right: 30px; /* Give space between logo and button */
+    }
+
+    .menu-bar .register-btn {
+        font-family: Arial, sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: white; /* Default white text */
+        padding: 8px 20px;
+        background: transparent;
+        border: 2px solid white; /* White border */
+        border-radius: 5px;
+        text-decoration: none;
+        transition: all 0.3s ease; /* Smooth hover effect */
+    }
+
+    .menu-bar .register-btn:hover {
+        background
+    
 </head>
 
 <body>
@@ -198,6 +248,75 @@
             camera.updateProjectionMatrix();
         });
     </script>
+    <!-- OBJECTIVES SECTION -->
+<div id="objectives-section">
+    <!-- Section Header -->
+    <h2 class="section-header">OBJECTIVES OF THE CONFERENCE</h2>
+    
+    <!-- Row 1: Boxes A, B, C -->
+    <div class="objectives-row">
+        <div class="objective-box" id="box-a">
+            <h3>Transformation</h3>
+            <p>Exploring how AI revolutionizes global commerce through automation, predictive insights, and customer-centric innovations, enabling businesses to operate with speed, efficiency, and adaptability in highly competitive markets.</p>
+        </div>
+        <div class="objective-box" id="box-b">
+            <h3>Interdisciplinarity</h3>
+            <p>Encouraging cross-sector research in retail, finance, logistics, and MSMEs to design AI solutions that are holistic, sustainable, and inclusive for diverse industries.</p>
+        </div>
+        <div class="objective-box" id="box-c">
+            <h3>Collaboration</h3>
+            <p>Strengthening cooperation among academia, industry leaders, and policymakers to build shared frameworks, accelerate innovation, and shape policies that support responsible AI-driven economic development.</p>
+        </div>
+    </div>
+
+    <!-- Row 2: Boxes D, E -->
+    <div class="objectives-row">
+        <div class="objective-box dynamic-box" id="box-d">
+            <h3>Ethics</h3>
+            <p>Addressing critical issues of fairness, inclusivity, and transparency to ensure AI technologies serve humanity equitably, safeguard privacy, and reduce risks of bias or misuse.</p>
+        </div>
+        <div class="objective-box dynamic-box" id="box-e">
+            <h3>Empowerment</h3>
+            <p>Preparing business leaders, educators, and youth with AI capabilities, fostering digital literacy, innovation-driven thinking, and future-ready skills to thrive in the age of intelligent technologies.</p>
+        </div>
+    </div>
+</div>
+            
+<script>
+    const boxD = document.getElementById("box-d");
+    const boxE = document.getElementById("box-e");
+
+    const handleScroll = () => {
+        const scrollY = window.scrollY; // Track vertical scroll position
+        const sectionTop = document.getElementById("objectives-section").offsetTop;
+        const triggerPoint = sectionTop + 50; // Adjust trigger point
+
+        // Update positions dynamically
+        if (scrollY >= triggerPoint && scrollY <= triggerPoint + 400) {
+            const moveY = scrollY - triggerPoint;
+
+            boxD.style.transform = `translateY(${-moveY * 0.5}px)`; // Move D upwards
+            boxE.style.transform = `translateY(${-moveY * 0.5}px)`; // Move E upwards
+
+            // Opacity update for A, B, C
+            document.querySelectorAll(".objective-box:not(.dynamic-box)").forEach((box) => {
+                box.style.opacity = 1 - (moveY / 400) * 0.9; // Fade as overlapped
+            });
+        }
+
+        // Reset positions when out of range
+        if (scrollY < triggerPoint || scrollY > triggerPoint + 400) {
+            boxD.style.transform = `translateY(0px)`;
+            boxE.style.transform = `translateY(0px)`;
+            document.querySelectorAll(".objective-box:not(.dynamic-box)").forEach((box) => {
+                box.style.opacity = 1; // Restore opacity
+            });
+        }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+</script>
+            
 </body>
 
 </html>

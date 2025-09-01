@@ -23,3 +23,49 @@
         }
 
         .header h1 {
+            font-size: 6rem; /* Bold and large */
+            font-weight: 900;
+            margin: 0;
+        }
+
+        .header p {
+            font-size: 2rem; /* Subtitle size */
+            margin: 10px 0 40px;
+        }
+
+        .header a {
+            display: inline-block;
+            font-size: 1.4rem;
+            padding: 12px 30px;
+            border: 2px solid white;
+            border-radius: 5px;
+            color: white;
+            background: transparent;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .header a:hover {
+            border-color: #ff6fa1;
+            background: linear-gradient(to right, #ff5f95, #735eff);
+            color: white;
+        }
+
+        canvas {
+            display: block; /* Remove space below canvas */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Content -->
+    <div class="header">
+        <h1>AgNite 2026 Conference</h1>
+        <p>Forefront of Innovation, Commerce, and Artificial Intelligence</p>
+        <a href="#">Learn More ➔</a>
+    </div>
+
+    <!-- Three.js Galaxy Spiral Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

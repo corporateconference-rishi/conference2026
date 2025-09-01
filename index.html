@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgNite 2026 Conference</title>
     <style>
+        /* Reset styles */
         body {
             margin: 0;
             overflow: hidden; /* No scrollbars */
             font-family: Arial, sans-serif;
-            background-color: black; /* Dark background */
+            background-color: black; /* Dark background for galaxy drill */
         }
 
+        /* Center Header Content */
         .header {
             position: absolute;
             top: 50%;
@@ -19,30 +21,31 @@
             transform: translate(-50%, -50%);
             text-align: center;
             color: white;
-            z-index: 10; /* Above animation */
+            z-index: 10; /* Ensure text stays above animation */
         }
 
         .header h1 {
-            font-size: 6rem; /* Bold and large */
-            font-weight: 900;
+            font-size: 6rem; /* Large title */
+            font-weight: 900; /* Bold title */
             margin: 0;
         }
 
         .header p {
             font-size: 2rem; /* Subtitle size */
-            margin: 10px 0 40px;
+            margin: 15px 0;
         }
 
         .header a {
             display: inline-block;
             font-size: 1.4rem;
+            font-weight: 600;
             padding: 12px 30px;
             border: 2px solid white;
             border-radius: 5px;
             color: white;
             background: transparent;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease-in-out;
         }
 
         .header a:hover {
@@ -51,8 +54,9 @@
             color: white;
         }
 
+        /* Fullscreen Canvas */
         canvas {
-            display: block; /* Remove space below canvas */
+            display: block;
         }
     </style>
 </head>
@@ -64,7 +68,7 @@
         <a href="#">Learn More ➔</a>
     </div>
 
-    <!-- Three.js Galaxy Spiral Animation -->
+    <!-- Three.js Galaxy Animation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>

@@ -1,3 +1,4 @@
+// Configuration
 const scene = new THREE.Scene();
 
 // Camera
@@ -58,7 +59,7 @@ function animate() {
 }
 animate();
 
-// Responsive canvas
+// Responsive rendering
 window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;

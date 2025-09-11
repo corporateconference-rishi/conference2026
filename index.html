@@ -1,3 +1,4 @@
+HTML
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +32,7 @@
         }
 
         .menu-bar .logo {
+            font-family: Arial, sans-serif;
             font-size: 1.4rem; /* Sleek modern size */
             font-weight: bold;
             color: white; /* White text */
@@ -38,6 +40,7 @@
         }
 
         .menu-bar .register-btn {
+            font-family: Arial, sans-serif;
             font-size: 1rem;
             font-weight: 600;
             color: white; /* Default white text */
@@ -51,4 +54,151 @@
 
         .menu-bar .register-btn:hover {
             background: white; /* Background switches to white on hover */
-            color: black; /* Text switches
+            color: black; /* Text switches to black on hover */
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7); /* Subtle glow effect */
+        }
+
+        /* Center Header */
+        .header {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 10; /* Ensure text stays above animation */
+        }
+
+        .header h1 {
+            font-size: 5rem; /* Large title */
+            font-weight: 900; /* Extra-bold title font */
+            margin: 0; /* No extra margin */
+        }
+
+        .header p {
+            font-size: 1.8rem; /* Subtitle size */
+            margin: 20px 0 0; /* Space below the title */
+        }
+
+        .header a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            border: 2px solid white;
+            background-color: transparent;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease; /* Smooth transition */
+        }
+
+        .header a:hover {
+            background: linear-gradient(to right, #ff0055, #36007d); /* Galaxy gradient effect */
+            color: white;
+        }
+
+        /* Canvas for Three.js Rendering */
+        canvas {
+            display: block; /* Ensure no whitespace */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sleek Menu Bar -->
+    <div class="menu-bar">
+        <div class="logo">AgNite 2026</div>
+        <a href="#" class="register-btn">Register</a>
+    </div>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>AgNite 2026 Conference</h1>
+        <p>Forefront of Innovation, Commerce, and Artificial Intelligence</p>
+        <a href="#">Learn More ➔</a>
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+
+        // Camera
+        const camera = new THREE.PerspectiveCamera(
+            75,
+            window.innerWidth / window.innerHeight,
+            0.1,
+            1000
+        );
+        camera.position.set(0, 0, 50); // Set camera back slightly for galaxy view
+
+        // Renderer
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Spiral Galaxy Geometry
+        const particleCount = 1500; // Total galaxy particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlePositions = [];
+        const particleColors = [];
+
+        // Loop to create spiral galaxy particles
+        for (let i = 0; i < particleCount; i++) {
+            const angle = i * 0.2; // Angle of spiral rotation
+            const radius = Math.pow(i / particleCount, 0.5) * 40; // Radius gradually expands outward
+            const x = Math.cos(angle) * radius; // X position
+            const y = Math.sin(angle) * radius; // Y position
+            const z = Math.sin(i * 0.02) * 10; // Depth variation in Z-axis
+
+            particlePositions.push(x, y, z);
+
+            // Add dynamic colors for particles
+            const r = Math.random() * 0.8 + 0.2; // Vary red
+            const g = Math.random() * 0.5; // Green color is dimmed
+            const b = Math.random() * 0.8 + 0.2; // Vary blue
+            particleColors.push(r, g, b);
+        }
+
+        // Assign position and color attributes to geometry
+        particlesGeometry.setAttribute(
+            "position",
+            new THREE.Float32BufferAttribute(particlePositions, 3)
+        );
+        particlesGeometry.setAttribute(
+            "color",
+            new THREE.Float32BufferAttribute(particleColors, 3)
+        );
+
+        const particleMaterial = new THREE.PointsMaterial({
+            size: 0.3, // Render smaller particles for hypnotic effect
+            vertexColors: true,
+        });
+
+        // Create the galaxy particle system
+        const galaxy = new THREE.Points(particlesGeometry, particleMaterial);
+        scene.add(galaxy);
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Slowly rotate the galaxy
+            galaxy.rotation.y += 0.004;
+            galaxy.rotation.x += 0.002;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Make the canvas responsive
+        window.addEventListener("resize", () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+</body>
+
+</html>

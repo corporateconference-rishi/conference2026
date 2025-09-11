@@ -1,10 +1,15 @@
 const scene = new THREE.Scene();
 
-// Camera
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+// Camera setup
+const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
 camera.position.set(0, 0, 50); // Set back slightly for galaxy view
 
-// Renderer
+// Renderer setup
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -33,8 +38,14 @@ for (let i = 0; i < particleCount; i++) {
 }
 
 // Assign attributes to geometry
-particlesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(particlePositions, 3));
-particlesGeometry.setAttribute('color', new THREE.Float32BufferAttribute(particleColors, 3));
+particlesGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(particlePositions, 3)
+);
+particlesGeometry.setAttribute(
+    "color",
+    new THREE.Float32BufferAttribute(particleColors, 3)
+);
 
 // Create galaxy particle material
 const particleMaterial = new THREE.PointsMaterial({
@@ -42,7 +53,7 @@ const particleMaterial = new THREE.PointsMaterial({
     vertexColors: true, // Use particle colors
 });
 
-// Add particle system to the scene
+// Add galaxy particle system to the scene
 const galaxy = new THREE.Points(particlesGeometry, particleMaterial);
 scene.add(galaxy);
 
@@ -59,7 +70,7 @@ function animate() {
 animate();
 
 // Responsive canvas
-window.addEventListener('resize', () => {
+window.addEventListener("resize", () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();

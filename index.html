@@ -18,8 +18,7 @@
             transform: translate(-50%, -50%);
             color: white;
             text-align: center;
-            Z-index: 2;
-            opacity: 1;
+            z-index: 2;
             animation: fadeIn 2s;
         }
         #tagline {
@@ -47,43 +46,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-        
-        const particles = new THREE.Geometry();
-        const particleCount = 10000;
-        const pMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.1 });
-
-        for (let p = 0; p < particleCount; p++) {
-            const x = Math.random() * 2000 - 1000;
-            const y = Math.random() * 2000 - 1000;
-            const z = Math.random() * 2000 - 1000;
-            particles.vertices.push(new THREE.Vector3(x, y, z));
-        }
-
-        const particleSystem = new THREE.Points(particles, pMaterial);
-        scene.add(particleSystem);
-
-        camera.position.z = 400;
-
-        const animate = function () {
-            requestAnimationFrame(animate);
-            particleSystem.rotation.x += 0.002;
-            particleSystem.rotation.y += 0.002;
-            renderer.render(scene, camera);
-        };
-
-        animate();
-
-        window.addEventListener('resize', function () {
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            renderer.setSize(width, height);
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-        });
-    </script>
-</body>
-</html>
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth

@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaxy Animation</title>
+    <title>AgNite 2026 Conference</title>
     <style>
+        /* Reset Styles */
         body {
             margin: 0;
-            overflow: hidden;
-            background-color: black;
+            overflow: hidden; /* Hide scrollbars */
             font-family: Arial, sans-serif;
+            background-color: black; /* Dark background */
         }
-        #message {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-align: center;
-            z-index: 2;
-            animation: fadeIn 2s;
-        }
-        #tagline {
-            font-size: 24px;
-            opacity: 0;
-            animation: fadeIn 4s forwards;
-            animation-delay: 3s; /* Delay for tagline appearance */
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        h1 {
-            font-size: 60px; 
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <div id="message">
-        <h1>Happy Birthday Yechu!!!</h1>
-        <div id="tagline">We defo lost touch, but always remember you're still one of my best friends even now! Hope you have an amazing birthday! Happy 20 Rockstar Yesh! 😎</div>
-    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth
+        /* Sleek Menu Bar */
+        .menu-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px; /* Slim menu bar for sleekness */
+            background: rgba(0, 0, 0, 0.6); /* Translucent background */
+            display: flex;
+            justify-content: space-between; /* Spread items horizontally */
+            align-items: center; /* Vertically center items */
+            padding: 0 20px; /* Bring edges closer */
+            z-index: 1000; /* Above all elements */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6); /* Shadow effect */
+        }
+
+        .menu-bar .logo {
+            font-size: 1.4rem; /* Sleek modern size */
+            font-weight: bold;
+            color: white; /* White text */
+            margin-right: 30px; /* Give space between logo and button */
+        }
+
+        .menu-bar .register-btn {
+            font-size: 1rem;
+            font-weight: 600;
+            color: white; /* Default white text */
+            padding: 8px 20px;
+            background: transparent;
+            border: 2px solid white; /* White border */
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease; /* Smooth hover effect */
+        }
+
+        .menu-bar .register-btn:hover {
+            background: white; /* Background switches to white on hover */
+            color: black; /* Text switches

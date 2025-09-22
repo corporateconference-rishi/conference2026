@@ -12,112 +12,98 @@
             font-family: Arial, sans-serif;
             background-color: black; /* Black background to match the theme */
             color: white; /* White text for readability */
-            text-align: center;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden; /* Hide unnecessary vertical scroll */
+            height: 100vh; /* Full viewport height */
+            overflow: hidden; /* Prevent overall page scrolling */
         }
 
+        /* Scrollable Box Styling */
+        .scroll-box {
+            position: relative;
+            width: 80%; /* Adjust width of the box */
+            max-width: 800px; /* Max container width */
+            height: 70vh; /* Make this box occupy 70% of the viewport height */
+            margin: 0 auto;
+            padding: 20px;
+            overflow-y: auto; /* Enable scrolling for content within */
+            border: 2px solid white; /* White border around the box */
+            border-radius: 10px; /* Rounded corners for aesthetics */
+            background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black */
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4); /* Glow effect */
+        }
+
+        /* Scrollbar Styling */
+        .scroll-box::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .scroll-box::-webkit-scrollbar-thumb {
+            background: white; /* Scrollbar color */
+            border-radius: 4px;
+        }
+
+        .scroll-box::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.8); /* Lighter scrollbar when hovered */
+        }
+
+        /* Title Styling */
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
             text-transform: uppercase;
-            letter-spacing: 0.1rem;
+            text-align: center;
+            margin: 10px auto;
         }
 
+        /* Content and Objectives List */
         ul {
-            list-style: none;
+            list-style: none; /* Remove bullet points */
             padding: 0;
             margin: 0;
-            max-width: 800px;
-            text-align: left;
         }
 
         ul li {
             font-size: 1.5rem;
-            margin: 20px 0;
-            line-height: 1.8;
-            text-align: center;
+            margin: 15px 0;
+            line-height: 1.8; /* Space lines for better readability */
+            text-align: left;
         }
 
-        a.back-home {
+        /* Back Button Style */
+        .back-home {
             font-size: 1rem;
             padding: 10px 20px;
-            background: transparent;
+            background-color: transparent;
             border: 2px solid white;
             color: white;
             border-radius: 5px;
             text-decoration: none;
-            margin-top: 40px;
-            display: inline-block;
+            margin-top: 20px;
             transition: all 0.3s ease-in-out;
+            display: block;
+            width: fit-content;
+            margin: 30px auto;
         }
 
-        a.back-home:hover {
-            background: white;
+        .back-home:hover {
+            background-color: white;
             color: black;
-        }
-
-        /* Gradual Blur Section */
-        .gradual-blur-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .gradual-blur-inner > div {
-            -webkit-backdrop-filter: inherit;
-            backdrop-filter: inherit;
-        }
-
-        .gradual-blur {
-            isolation: isolate;
-        }
-
-        @supports not (backdrop-filter: blur(1px)) {
-            .gradual-blur-inner > div {
-                background: rgba(0, 0, 0, 0.3);
-                opacity: 0.5;
-            }
-        }
-
-        .gradual-blur-fixed {
-            position: fixed !important;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1000;
         }
     </style>
 </head>
 
 <body>
-    <h1>Objectives</h1>
-    <ul>
-        <li>🚀 Empower innovation through cutting-edge technology.</li>
-        <li>🤖 Seamlessly integrate artificial intelligence and commerce.</li>
-        <li>🌐 Foster collaboration between industries worldwide.</li>
-        <li>✨ Inspire creativity and leadership in tech communities.</li>
-    </ul>
-
-    <a href="index.html" class="back-home">← Back to Home</a>
-
-    <!-- Gradual Blur Integration -->
-    <div
-        class="gradual-blur"
-        style="
-            position: absolute;
-            inset: 0;
-            mask-image: linear-gradient(to bottom, transparent 10%, black 30%, black 70%, transparent 90%);
-            backdrop-filter: blur(4px);
-        "
-    >
-        <div class="gradual-blur-inner"></div>
+    <!-- Scrollable Box for Objectives -->
+    <div class="scroll-box">
+        <h1>Objectives</h1>
+        <ul>
+            <li>🚀 Empower innovation through cutting-edge technology.</li>
+            <li>🤖 Seamlessly integrate artificial intelligence and commerce.</li>
+            <li>🌐 Foster collaboration between industries worldwide.</li>
+            <li>✨ Inspire creativity and leadership in tech communities.</li>
+        </ul>
+        <a href="index.html" class="back-home">← Back to Home</a>
     </div>
 </body>
 

@@ -1,3 +1,4 @@
+// Three.js Galaxy Animation
 const scene = new THREE.Scene();
 
 // Camera setup
@@ -7,7 +8,7 @@ const camera = new THREE.PerspectiveCamera(
     0.1,
     1000
 );
-camera.position.set(0, 0, 50); // Set back slightly for galaxy view
+camera.position.set(0, 0, 50); // Set camera back slightly for galaxy view
 
 // Renderer setup
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -76,79 +77,11 @@ window.addEventListener("resize", () => {
     camera.updateProjectionMatrix();
 });
 
-
-// Three.js Galaxy Animation
-const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-);
-camera.position.set(0, 0, 50); // Set camera back slightly for galaxy view
-
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-
-// Spiral Galaxy Geometry
-const particleCount = 1500; // Total galaxy particles
-const particlesGeometry = new THREE.BufferGeometry();
-const particlePositions = [];
-const particleColors = [];
-
-for (let i = 0; i < particleCount; i++) {
-    const angle = i * 0.2;
-    const radius = Math.pow(i / particleCount, 0.5) * 40;
-    const x = Math.cos(angle) * radius;
-    const y = Math.sin(angle) * radius;
-    const z = Math.sin(i * 0.02) * 10;
-
-    particlePositions.push(x, y, z);
-
-    const r = Math.random() * 0.8 + 0.2;
-    const g = Math.random() * 0.5;
-    const b = Math.random() * 0.8 + 0.2;
-    particleColors.push(r, g, b);
-}
-
-particlesGeometry.setAttribute(
-    "position",
-    new THREE.Float32BufferAttribute(particlePositions, 3)
-);
-particlesGeometry.setAttribute(
-    "color",
-    new THREE.Float32BufferAttribute(particleColors, 3)
-);
-
-const particleMaterial = new THREE.PointsMaterial({
-    size: 0.3,
-    vertexColors: true,
-});
-
-const galaxy = new THREE.Points(particlesGeometry, particleMaterial);
-scene.add(galaxy);
-
-function animate() {
-    requestAnimationFrame(animate);
-
-    galaxy.rotation.y += 0.004;
-    galaxy.rotation.x += 0.002;
-
-    renderer.render(scene, camera);
-}
-animate();
-
-window.addEventListener("resize", () => {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-});
-
 // Gradual Blur effect for Objectives Section
 document.addEventListener("scroll", function () {
     const objectivesSection = document.getElementById("animated-background");
-    const blurStrength = Math.min(window.scrollY / 200, 10); // Control max blur
-    objectivesSection.style.backdropFilter = `blur(${blurStrength}px)`;
+    if (objectivesSection) {
+        const blurStrength = Math.min(window.scrollY / 200, 10); // Control max blur
+        objectivesSection.style.backdropFilter = `blur(${blurStrength}px)`;
+    }
 });

@@ -120,9 +120,10 @@ body {
 
 /* Galaxy Animation Style */
 canvas {
-    display
+    display: block; /* Ensure no whitespace */
+}
 
-    /* Learn More Page Styling */
+/* Learn More Page Styling */
 .learn-more-content {
     margin: 100px auto; /* Adds spacing from the top of the page */
     max-width: 800px; /* Limits width */

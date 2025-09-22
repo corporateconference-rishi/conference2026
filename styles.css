@@ -121,3 +121,22 @@ body {
 /* Galaxy Animation Style */
 canvas {
     display
+
+    /* Learn More Page Styling */
+.learn-more-content {
+    margin: 100px auto; /* Adds spacing from the top of the page */
+    max-width: 800px; /* Limits width */
+    text-align: center; /* Centers the text */
+    color: white; /* Keeps the text readable */
+    line-height: 1.8; /* Easy-to-read line spacing */
+}
+
+.learn-more-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.learn-more-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
